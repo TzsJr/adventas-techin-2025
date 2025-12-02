@@ -10,7 +10,7 @@ public class IOManager {
         System.out.println("Hello Santa!\n");
     }
 
-    public int getIntInput(String message) {
+    public int getIntInput(String message, int lowLimit, int highLimit) {
         boolean isValidValue;
         int intValue = 0;
 
@@ -18,14 +18,17 @@ public class IOManager {
             System.out.println(message);
             try {
                 intValue = userInput.nextInt();
-                if (intValue <= 0) {
-                    isValidValue = reportErrorReturnNotValid();
+                if (intValue <= lowLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too low!");
+                    continue;
+                } else if (intValue > highLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too high!");
                     continue;
                 }
                 isValidValue = true;
                 userInput.nextLine();
             } catch (InputMismatchException e) {
-                isValidValue = reportErrorReturnNotValid();
+                isValidValue = reportErrorReturnNotValid("Value too high or illegal!");
                 userInput.nextLine();
             }
         } while (!isValidValue);
@@ -33,7 +36,7 @@ public class IOManager {
         return intValue;
     }
 
-    public double getDecimalInput(String message) {
+    public double getDecimalInput(String message, double lowLimit, double highLimit) {
         boolean isValidValue;
         double doubleValue = 0.0;
 
@@ -41,14 +44,17 @@ public class IOManager {
             System.out.println(message);
             try {
                 doubleValue = userInput.nextDouble();
-                if (doubleValue < 0) {
-                    isValidValue = reportErrorReturnNotValid();
+                if (doubleValue < lowLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too low!");
+                    continue;
+                } else if (doubleValue > highLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too high!");
                     continue;
                 }
                 isValidValue = true;
                 userInput.nextLine();
             } catch (InputMismatchException e) {
-                isValidValue = reportErrorReturnNotValid();
+                isValidValue = reportErrorReturnNotValid("Value too high or illegal!");
                 userInput.nextLine();
             }
         } while (!isValidValue);
@@ -56,8 +62,8 @@ public class IOManager {
         return doubleValue;
     }
 
-    private boolean reportErrorReturnNotValid() {
-        System.out.println("Wrong value!");
+    private boolean reportErrorReturnNotValid(String message) {
+        System.out.println("Wrong value! " + message);
         return false;
     }
 }
