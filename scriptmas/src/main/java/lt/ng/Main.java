@@ -1,5 +1,6 @@
 package lt.ng;
 
+import lt.ng.model.Clock;
 import lt.ng.model.Order;
 import lt.ng.util.IOManager;
 
@@ -10,6 +11,7 @@ public class Main {
 
         ioManager.welcome();
         processOrder(ioManager, tileOrder);
+        calculateTime(ioManager);
     }
 
     private static void processOrder(IOManager ioManager, Order tileOrder) {
@@ -36,5 +38,19 @@ public class Main {
         tileOrder.calculateTotalCost();
 
         System.out.println(tileOrder.getOrderInvoice());
+    }
+
+    private static void calculateTime(IOManager ioManager) {
+        int hours = ioManager.getIntInput(
+                "Please enter workshop clock hours (must be whole number): ",
+                -1,
+                23);
+        int minutes = ioManager.getIntInput(
+                "Please enter workshop clock minutes (must be whole number): ",
+                -1,
+                59);
+        Clock clock = new Clock(hours, minutes);
+
+        System.out.println(clock.getTime());
     }
 }
