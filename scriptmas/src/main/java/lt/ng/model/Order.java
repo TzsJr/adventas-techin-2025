@@ -11,10 +11,10 @@ public class Order {
     private int roomWidth;
     private long roomArea;
     private int tileAmount;
-    private final int EXTRA_TILES_PERCENT = 5;
     private int tileTotalAmount;
     private double m2price;
     private double totalCost;
+    private final int EXTRA_TILES_PERCENT = 5;
 
     public void calculateTotalCost() {
         tileArea = getArea(tileLength, tileWidth);
