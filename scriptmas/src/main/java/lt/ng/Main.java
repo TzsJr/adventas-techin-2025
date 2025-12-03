@@ -1,6 +1,7 @@
 package lt.ng;
 
 import lt.ng.model.Clock;
+import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
 import lt.ng.util.IOManager;
 
@@ -12,6 +13,7 @@ public class Main {
         ioManager.welcome();
         processOrder(ioManager, tileOrder);
         calculateTime(ioManager);
+        trimNumber(ioManager);
     }
 
     private static void processOrder(IOManager ioManager, Order tileOrder) {
@@ -52,5 +54,12 @@ public class Main {
         Clock clock = new Clock(hours, minutes);
 
         System.out.println(clock.getTime());
+    }
+
+    private static void trimNumber(IOManager ioManager) {
+        int number = ioManager.getIntInput("Please enter four-digit number: ", 999, 9999);
+        NumberTrimmer numTrimmer = new NumberTrimmer(number);
+
+        System.out.println(numTrimmer.getResults());
     }
 }
