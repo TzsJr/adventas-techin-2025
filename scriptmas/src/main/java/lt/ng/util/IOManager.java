@@ -1,6 +1,8 @@
 package lt.ng.util;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class IOManager {
@@ -60,6 +62,36 @@ public class IOManager {
         } while (!isValidValue);
 
         return doubleValue;
+    }
+
+    public List<Double> getDecimalsInput(String message, double lowLimit, double highLimit, double stopValue) {
+        boolean isValidValue = false;
+        double doubleValue;
+        List<Double> doubleValues = new ArrayList<>();
+
+        do {
+            System.out.println(message);
+            try {
+                doubleValue = userInput.nextDouble();
+                if (doubleValue < lowLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too low!");
+                    continue;
+                } else if (doubleValue > highLimit) {
+                    isValidValue = reportErrorReturnNotValid("Value too high!");
+                    continue;
+                }
+                doubleValues.add(doubleValue);
+                if (doubleValue == stopValue) {
+                    isValidValue = true;
+                }
+                userInput.nextLine();
+            } catch (InputMismatchException e) {
+                isValidValue = reportErrorReturnNotValid("Value too high or illegal!");
+                userInput.nextLine();
+            }
+        } while (!isValidValue);
+
+        return doubleValues;
     }
 
     private boolean reportErrorReturnNotValid(String message) {

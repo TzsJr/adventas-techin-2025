@@ -48,3 +48,25 @@ Example: If Santa’s number is <b>1235</b>, then the new number should be: <b>1
 Help Santa tidy up his list before Christmas Eve!
 
 ---
+# 4th of December
+
+### Gift Bag
+
+Santa Claus is preparing his gift bag and checking the prices of different toys. 
+The toy prices (real numbers) are entered from the keyboard. When <b>0</b> is entered, it means the magical toy list is finished.
+
+Write a program that:
+1. <b>Calculates the total price of all toys</b> that cost <b>more than 10 EUR</b> 
+(because the more expensive toys are usually extra magical!).
+2. <b>Determines and outputs</b> how many such special toys Santa has added to his bag.
+
+Example (Santa’s list):
+
+Input:
+<b>5.6; 6.7; 12.3; 15.7; 0</b>
+
+Output should be:
+- Total price of magical toys: <b>28.0 EUR</b>
+- Number of magical toys: <b>2</b>
+
+---

@@ -3,7 +3,10 @@ package lt.ng;
 import lt.ng.model.Clock;
 import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
+import lt.ng.model.ToyCounter;
 import lt.ng.util.IOManager;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +16,7 @@ public class Main {
         processOrder(ioManager);
         calculateTime(ioManager);
         trimNumber(ioManager);
+        countToys(ioManager);
     }
 
     private static void processOrder(IOManager ioManager) {
@@ -61,5 +65,18 @@ public class Main {
         NumberTrimmer numTrimmer = new NumberTrimmer(number);
 
         System.out.println(numTrimmer.getResults());
+    }
+
+    private static void countToys(IOManager ioManager) {
+        final double EXPENSIVE_PRICE = 10.0;
+        List<Double> inputs = ioManager.getDecimalsInput(
+                "Please enter toy prices (must be positive numbers), entered 0 means list is finished: ",
+                0.0,
+                Double.MAX_VALUE,
+                0.0);
+        ToyCounter toyCounter = new ToyCounter(inputs);
+        toyCounter.countExpensiveToys(EXPENSIVE_PRICE);
+
+        System.out.println(toyCounter.getResults());
     }
 }
