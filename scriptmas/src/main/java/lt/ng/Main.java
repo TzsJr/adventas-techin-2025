@@ -8,15 +8,15 @@ import lt.ng.util.IOManager;
 public class Main {
     public static void main(String[] args) {
         IOManager ioManager = new IOManager();
-        Order tileOrder = new Order();
 
         ioManager.welcome();
-        processOrder(ioManager, tileOrder);
+        processOrder(ioManager);
         calculateTime(ioManager);
         trimNumber(ioManager);
     }
 
-    private static void processOrder(IOManager ioManager, Order tileOrder) {
+    private static void processOrder(IOManager ioManager) {
+        Order tileOrder = new Order();
         tileOrder.setTileLength(ioManager.getIntInput(
                 "Please enter length of tile (must be whole number): ",
                 0,
