@@ -12,6 +12,22 @@ public class IOManager {
         System.out.println("Hello Santa!\n");
     }
 
+    public void goodBye() {
+        System.out.println("\nThank you! Merry Christmas!\n");
+    }
+
+    public int getWantedTask(int taskCount) {
+        String tasksDescription = String.format("""
+                        Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
+                        1: Santa’s Tiling Trouble (tiles calculator)
+                        2: Santa’s Midnight Clock Countdown (time calculator)
+                        3: Santa’s Number-Trimming Magic (number trimmer)
+                        4: Gift Bag (toys price calculator)
+                        """,
+                taskCount);
+        return getIntInput(tasksDescription, 0, taskCount);
+    }
+
     public int getIntInput(String message, int lowLimit, int highLimit) {
         boolean isValidValue;
         int intValue = 0;
@@ -20,7 +36,7 @@ public class IOManager {
             System.out.println(message);
             try {
                 intValue = userInput.nextInt();
-                if (intValue <= lowLimit) {
+                if (intValue < lowLimit) {
                     isValidValue = reportErrorReturnNotValid("Value too low!");
                     continue;
                 } else if (intValue > highLimit) {

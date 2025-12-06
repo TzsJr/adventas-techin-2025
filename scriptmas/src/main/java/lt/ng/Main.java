@@ -1,82 +1,12 @@
 package lt.ng;
 
-import lt.ng.model.Clock;
-import lt.ng.model.NumberTrimmer;
-import lt.ng.model.Order;
-import lt.ng.model.ToyCounter;
-import lt.ng.util.IOManager;
-
-import java.util.List;
+import lt.ng.util.TaskProcessor;
 
 public class Main {
     public static void main(String[] args) {
-        IOManager ioManager = new IOManager();
+        TaskProcessor taskProcessor = new TaskProcessor();
 
-        ioManager.welcome();
-        processOrder(ioManager);
-        calculateTime(ioManager);
-        trimNumber(ioManager);
-        countToys(ioManager);
-    }
-
-    private static void processOrder(IOManager ioManager) {
-        Order tileOrder = new Order();
-        tileOrder.setTileLength(ioManager.getIntInput(
-                "Please enter length of tile (must be whole number): ",
-                0,
-                Integer.MAX_VALUE));
-        tileOrder.setTileWidth(ioManager.getIntInput(
-                "Please enter width of tile (must be whole number): ",
-                0,
-                Integer.MAX_VALUE));
-        tileOrder.setRoomLength(ioManager.getIntInput(
-                "Please enter length of room (must be whole number): ",
-                0,
-                Integer.MAX_VALUE));
-        tileOrder.setRoomWidth(ioManager.getIntInput(
-                "Please enter width of room (must be whole number): ",
-                0,
-                Integer.MAX_VALUE));
-        tileOrder.setM2price(ioManager.getDecimalInput(
-                "Please enter price of m2 of tiles: ",
-                0.0,
-                Double.MAX_VALUE));
-        tileOrder.calculateTotalCost();
-
-        System.out.println(tileOrder.getOrderInvoice());
-    }
-
-    private static void calculateTime(IOManager ioManager) {
-        int hours = ioManager.getIntInput(
-                "Please enter workshop clock hours (must be whole number): ",
-                -1,
-                23);
-        int minutes = ioManager.getIntInput(
-                "Please enter workshop clock minutes (must be whole number): ",
-                -1,
-                59);
-        Clock clock = new Clock(hours, minutes);
-
-        System.out.println(clock.getTime());
-    }
-
-    private static void trimNumber(IOManager ioManager) {
-        int number = ioManager.getIntInput("Please enter four-digit number: ", 999, 9999);
-        NumberTrimmer numTrimmer = new NumberTrimmer(number);
-
-        System.out.println(numTrimmer.getResults());
-    }
-
-    private static void countToys(IOManager ioManager) {
-        final double EXPENSIVE_PRICE = 10.0;
-        List<Double> inputs = ioManager.getDecimalsInput(
-                "Please enter toy prices (must be positive numbers), entered 0 means list is finished: ",
-                0.0,
-                Double.MAX_VALUE,
-                0.0);
-        ToyCounter toyCounter = new ToyCounter(inputs);
-        toyCounter.countExpensiveToys(EXPENSIVE_PRICE);
-
-        System.out.println(toyCounter.getResults());
+        taskProcessor.welcome();
+        taskProcessor.processWantedTask();
     }
 }
