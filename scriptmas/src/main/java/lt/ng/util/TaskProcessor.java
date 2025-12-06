@@ -7,6 +7,9 @@ import lt.ng.model.ToyCounter;
 
 import java.util.List;
 
+import static lt.ng.constant.ChristmasConstants.DIGITS;
+import static lt.ng.constant.ChristmasConstants.FESTIVE_MESSAGES;
+
 public class TaskProcessor {
     private final IOManager ioManager;
 
@@ -23,7 +26,7 @@ public class TaskProcessor {
     }
 
     public void processWantedTask() {
-        final int IMPLEMENTED_TASKS = 4;
+        final int IMPLEMENTED_TASKS = 5;
         int taskId = ioManager.getWantedTask(IMPLEMENTED_TASKS);
 
         switch (taskId) {
@@ -41,8 +44,12 @@ public class TaskProcessor {
             case 4:
                 countToys();
                 break;
+            case 5:
+                countdown(10, 0, 1000);
+                break;
             default:
                 System.out.println("Something unexpected entered: " + taskId);
+                return;
         }
         goodBye();
     }
@@ -106,5 +113,30 @@ public class TaskProcessor {
         toyCounter.countExpensiveToys(EXPENSIVE_PRICE);
 
         System.out.println(toyCounter.getResults());
+    }
+
+    private void countdown(int start, int end, int sleepMs) {
+        if (start <= end) {
+            System.out.println("Start cannot be lower than end for countdown!");
+            return;
+        }
+        if (DIGITS.length - 1 < start) {
+            start = DIGITS.length - 1;
+            System.out.println("Start is too big, reducing to match constant size: " + start);
+        }
+
+        for (int i = start; i >= end; i--) {
+            // No build in way to clear console in Java, so the easiest way is to separate each loop with a bunch of new lines
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+            System.out.println(DIGITS[i]);
+            System.out.println(FESTIVE_MESSAGES[i]);
+
+            try {
+                Thread.sleep(sleepMs);
+            } catch (InterruptedException e) {
+                System.out.println("Exception during countdown: " + e.getMessage());
+            }
+        }
     }
 }

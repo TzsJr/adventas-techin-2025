@@ -13,7 +13,7 @@ public class IOManager {
     }
 
     public void goodBye() {
-        System.out.println("\nThank you! Merry Christmas!\n");
+        System.out.println("\n\n\nTask completed! Merry Christmas!\n");
     }
 
     public int getWantedTask(int taskCount) {
@@ -23,6 +23,7 @@ public class IOManager {
                         2: Santa’s Midnight Clock Countdown (time calculator)
                         3: Santa’s Number-Trimming Magic (number trimmer)
                         4: Gift Bag (toys price calculator)
+                        5: Santa’s Magical ASCII Countdown (countdown timer)
                         """,
                 taskCount);
         return getIntInput(tasksDescription, 0, taskCount);

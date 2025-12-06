@@ -70,3 +70,30 @@ Output should be:
 - Number of magical toys: <b>2</b>
 
 ---
+# 5th of December
+
+### Santa’s Magical ASCII Countdown
+
+Santa Claus is preparing for his Christmas Eve flight, but before the sleigh lifts off the ground, 
+he must complete a <b>magical countdown</b> from <b>10 to 0</b>. 
+The countdown must be displayed in <b>big ASCII-art numbers</b>, using the provided DIGITS array.
+
+Your task is to help Santa launch his sleigh!
+
+<b>Task Requirements</b>
+Create a program that:
+1. Starts a countdown from <b>10</b> down to <b>0</b>.
+2. Each second:
+    - Clears the screen.
+    - Displays the current number using the ASCII art from the DIGITS array.
+    - Shows a festive message, such as:
+      - "Santa is preparing…"
+      - "Reindeer are buckling up…"
+      - "Sleigh warming up…"
+3. When the countdown reaches <b>0</b>, display:
+   
+<i>SANTA’S SLEIGH IS LAUNCHING!</i>
+
+Digit array : https://github.com/tuleelut/techin_scriptmas_2025.git 
+
+---
