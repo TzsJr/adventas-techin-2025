@@ -5,10 +5,16 @@ import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
 import lt.ng.model.ToyCounter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import static java.time.Month.DECEMBER;
+import static lt.ng.constant.ChristmasConstants.CONSOLE_CLEAR;
 import static lt.ng.constant.ChristmasConstants.DIGITS;
+import static lt.ng.constant.ChristmasConstants.EXPENSIVE_PRICE;
 import static lt.ng.constant.ChristmasConstants.FESTIVE_MESSAGES;
+import static lt.ng.constant.ChristmasConstants.IMPLEMENTED_TASKS;
+import static lt.ng.constant.ChristmasConstants.UNEXPECTED_VALUE;
 
 public class TaskProcessor {
     private final IOManager ioManager;
@@ -26,7 +32,6 @@ public class TaskProcessor {
     }
 
     public void processWantedTask() {
-        final int IMPLEMENTED_TASKS = 5;
         int taskId = ioManager.getWantedTask(IMPLEMENTED_TASKS);
 
         switch (taskId) {
@@ -47,8 +52,11 @@ public class TaskProcessor {
             case 5:
                 countdown(10, 0, 1000);
                 break;
+            case 6:
+                calculateFlight();
+                break;
             default:
-                System.out.println("Something unexpected entered: " + taskId);
+                System.out.printf(UNEXPECTED_VALUE, taskId);
                 return;
         }
         goodBye();
@@ -103,7 +111,6 @@ public class TaskProcessor {
     }
 
     private void countToys() {
-        final double EXPENSIVE_PRICE = 10.0;
         List<Double> inputs = ioManager.getDecimalsInput(
                 "Please enter toy prices (must be positive numbers), entered 0 means list is finished: ",
                 0.0,
@@ -127,7 +134,7 @@ public class TaskProcessor {
 
         for (int i = start; i >= end; i--) {
             // No build in way to clear console in Java, so the easiest way is to separate each loop with a bunch of new lines
-            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println(CONSOLE_CLEAR);
 
             System.out.println(DIGITS[i]);
             System.out.println(FESTIVE_MESSAGES[i]);
@@ -138,5 +145,31 @@ public class TaskProcessor {
                 System.out.println("Exception during countdown: " + e.getMessage());
             }
         }
+    }
+
+    private void calculateFlight() {
+        int hours = ioManager.getIntInput(
+                "Please enter hours when sleigh takes off from North Pole (must be whole number): ",
+                0,
+                23);
+        int minutes = ioManager.getIntInput(
+                "Please enter minutes when sleigh takes off from North Pole (must be whole number): ",
+                0,
+                59);
+        long flightDuration = ioManager.getIntInput(
+                "Please enter for how long flight lasts (must be whole number): ",
+                0,
+                59);
+        LocalDateTime takeOffTime = LocalDateTime.of(2025, DECEMBER, 31, hours, minutes, 0);
+        LocalDateTime landingTime = takeOffTime.plusMinutes(flightDuration);
+
+        System.out.printf(
+                "If Santa takes off at %d hour and %d minute, and the flight lasts %d minutes, " +
+                        "then Santa will land at %d hour and %d minute.",
+                hours,
+                minutes,
+                flightDuration,
+                landingTime.getHour(),
+                landingTime.getMinute());
     }
 }

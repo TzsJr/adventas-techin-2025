@@ -3,6 +3,8 @@ package lt.ng.model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import static lt.ng.constant.ChristmasConstants.EXTRA_TILES_PERCENT;
+
 public class Order {
     private int tileLength;
     private int tileWidth;
@@ -14,7 +16,6 @@ public class Order {
     private int tileTotalAmount;
     private double m2price;
     private double totalCost;
-    private final int EXTRA_TILES_PERCENT = 5;
 
     public void calculateTotalCost() {
         tileArea = getArea(tileLength, tileWidth);

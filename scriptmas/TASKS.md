@@ -97,3 +97,25 @@ Create a program that:
 Digit array : https://github.com/tuleelut/techin_scriptmas_2025.git 
 
 ---
+# 6th of December
+
+### Santa’s Sleigh Flight Schedule
+
+Santa’s magical sleigh takes off from the North Pole at <b>a hours</b> and <b>b minutes</b>. 
+The sleigh stays in the air for <c>c minutes</c> delivering presents.
+
+Write a program that calculates:
+
+- <b>v</b> — the hour when Santa lands
+- <b>m</b> — the minute when Santa lands
+
+Keep in mind that <b>c can be large</b>, meaning Santa might land <b>after midnight</b>, on the next day!
+
+<b>Example:</b> If Santa takes off at <b>a = 23, b = 55</b>, and the flight lasts <b>c = 14 minutes</b>, then Santa will land at:
+
+- <b>v = 0 hours
+- m = 9 minutes</b>
+
+Help Santa keep his schedule on time—Christmas depends on it!
+
+---

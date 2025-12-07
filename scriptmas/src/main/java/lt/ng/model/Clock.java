@@ -1,5 +1,8 @@
 package lt.ng.model;
 
+import static lt.ng.constant.ChristmasConstants.MINUTES_IN_H;
+import static lt.ng.constant.ChristmasConstants.SECONDS_IN_MIN;
+
 public class Clock {
     private final int x;
     private final int y;
@@ -7,8 +10,6 @@ public class Clock {
     private final int s;
 
     public Clock(int x, int y) {
-        final int MINUTES_IN_H = 60;
-        final int SECONDS_IN_MIN = 60;
         this.x = x;
         this.y = y;
         m = x * MINUTES_IN_H + y;
