@@ -119,3 +119,19 @@ Keep in mind that <b>c can be large</b>, meaning Santa might land <b>after midni
 Help Santa keep his schedule on time—Christmas depends on it!
 
 ---
+# 7th of December
+
+### Santa’s Christmas Concert Seating Plan
+
+Santa is organizing a big Christmas concert, and the architect has designed a hall with <b>n rows</b> of seats.
+
+- In the <b>first row</b>, there will be <b>k seats</b>.
+- Every next row will have <b>2 more seats</b> than the row before it (because more elves want a good view!).
+
+Write a program that calculates <b>s</b>, the <b>total number of seats</b> Santa must order to match the architect’s seating plan.
+
+<b>Example:</b> If <b>n = 3</b> rows and the first row has <b>k = 8</b> seats, then the total number of seats should be: <b>s = 30</b> seats
+
+Help Santa make sure every elf gets a spot at the show!
+
+---

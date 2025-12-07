@@ -3,6 +3,7 @@ package lt.ng.util;
 import lt.ng.model.Clock;
 import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
+import lt.ng.model.SeatCalculator;
 import lt.ng.model.ToyCounter;
 
 import java.time.LocalDateTime;
@@ -54,6 +55,9 @@ public class TaskProcessor {
                 break;
             case 6:
                 calculateFlight();
+                break;
+            case 7:
+                calculateSeats();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -165,11 +169,26 @@ public class TaskProcessor {
 
         System.out.printf(
                 "If Santa takes off at %d hour and %d minute, and the flight lasts %d minutes, " +
-                        "then Santa will land at %d hour and %d minute.",
+                        "then Santa will land at %d hour and %d minute.\n",
                 hours,
                 minutes,
                 flightDuration,
                 landingTime.getHour(),
                 landingTime.getMinute());
+    }
+
+    private void calculateSeats() {
+        int rows = ioManager.getIntInput(
+                "Please enter how many rows there are in a hall (must be whole number): ",
+                0,
+                Integer.MAX_VALUE);
+        int seatsInFirstRow = ioManager.getIntInput(
+                "Please enter how many seats there are in first row (must be whole number): ",
+                0,
+                Integer.MAX_VALUE);
+        SeatCalculator seatCalculator = new SeatCalculator(rows, seatsInFirstRow);
+        seatCalculator.calculateSeats();
+
+        System.out.println(seatCalculator.getResults());
     }
 }
