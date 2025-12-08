@@ -7,9 +7,38 @@ public class LightsGenerator {
         this.rows = rows;
     }
 
-    public String generatePattern() {
+    public String getPattern() {
         String[][] pattern = fillPattern();
-        int rowsWithBorder = rows + 1;
+
+        return generatePattern(pattern, rows + 1);
+    }
+
+    private String[][] fillPattern() {
+        String[][] pattern = new String[rows][rows];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < rows; j++) {
+                pattern[i][j] = getValue(i + 1, j + 1);
+            }
+        }
+
+        return pattern;
+    }
+
+    private String getValue(int row, int col) {
+        int sum = row + col;
+        if (sum % 3 == 0) {
+            if (sum % 5 == 0) {
+                return "G";
+            }
+            return "T";
+        } else if (sum % 5 == 0) {
+            return "S";
+        }
+        return ".";
+    }
+
+    private String generatePattern(String[][] pattern, int rowsWithBorder) {
         StringBuilder patternBuilder = new StringBuilder();
 
         for (int i = 0; i <= rowsWithBorder; i++) {
@@ -37,30 +66,5 @@ public class LightsGenerator {
         }
 
         return patternBuilder.toString();
-    }
-
-    private String[][] fillPattern() {
-        String[][] pattern = new String[rows][rows];
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < rows; j++) {
-                pattern[i][j] = getValue(i + 1, j + 1);
-            }
-        }
-
-        return pattern;
-    }
-
-    private String getValue(int row, int col) {
-        int sum = row + col;
-        if (sum % 3 == 0) {
-            if (sum % 5 == 0) {
-                return "G";
-            }
-            return "T";
-        } else if (sum % 5 == 0) {
-            return "S";
-        }
-        return ".";
     }
 }

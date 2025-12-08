@@ -203,6 +203,6 @@ public class TaskProcessor {
                 Integer.MAX_VALUE);
         LightsGenerator lightsGenerator = new LightsGenerator(rows);
 
-        System.out.println(lightsGenerator.generatePattern());
+        System.out.println(lightsGenerator.getPattern());
     }
 }
