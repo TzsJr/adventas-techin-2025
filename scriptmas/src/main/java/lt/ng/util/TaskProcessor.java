@@ -71,27 +71,27 @@ public class TaskProcessor {
     }
 
     private void processOrder() {
-        Order tileOrder = new Order();
-        tileOrder.setTileLength(ioManager.getIntInput(
+        int tileLength = ioManager.getIntInput(
                 "Please enter length of tile (must be whole number): ",
                 1,
-                Integer.MAX_VALUE));
-        tileOrder.setTileWidth(ioManager.getIntInput(
+                Integer.MAX_VALUE);
+        int tileWidth = ioManager.getIntInput(
                 "Please enter width of tile (must be whole number): ",
                 1,
-                Integer.MAX_VALUE));
-        tileOrder.setRoomLength(ioManager.getIntInput(
+                Integer.MAX_VALUE);
+        int roomLength = ioManager.getIntInput(
                 "Please enter length of room (must be whole number): ",
                 1,
-                Integer.MAX_VALUE));
-        tileOrder.setRoomWidth(ioManager.getIntInput(
+                Integer.MAX_VALUE);
+        int roomWidth = ioManager.getIntInput(
                 "Please enter width of room (must be whole number): ",
                 1,
-                Integer.MAX_VALUE));
-        tileOrder.setM2price(ioManager.getDecimalInput(
+                Integer.MAX_VALUE);
+        double m2Price = ioManager.getDecimalInput(
                 "Please enter price of m2 of tiles: ",
                 0.0,
-                Double.MAX_VALUE));
+                Double.MAX_VALUE);
+        Order tileOrder = new Order(tileLength, tileWidth, roomLength, roomWidth, m2Price);
         tileOrder.calculateTotalCost();
 
         System.out.println(tileOrder.getOrderInvoice());

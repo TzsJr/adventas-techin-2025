@@ -17,12 +17,20 @@ public class Order {
     private double m2price;
     private double totalCost;
 
+    public Order(int tileLength, int tileWidth, int roomLength, int roomWidth, double m2price) {
+        this.tileLength = tileLength;
+        this.tileWidth = tileWidth;
+        this.roomLength = roomLength;
+        this.roomWidth = roomWidth;
+        this.m2price = m2price;
+    }
+
     public void calculateTotalCost() {
         tileArea = getArea(tileLength, tileWidth);
         roomArea = getArea(roomLength, roomWidth);
         tileAmount = round((double) roomArea / tileArea);
         double extraTiles = (double) (tileAmount * EXTRA_TILES_PERCENT) / 100;
-        tileTotalAmount = round(extraTiles  + tileAmount);
+        tileTotalAmount = round(extraTiles + tileAmount);
         totalCost = round(tileTotalAmount * m2price, 2);
     }
 
@@ -42,26 +50,6 @@ public class Order {
                 EXTRA_TILES_PERCENT,
                 tileTotalAmount,
                 totalCost);
-    }
-
-    public void setTileLength(int tileLength) {
-        this.tileLength = tileLength;
-    }
-
-    public void setTileWidth(int tileWidth) {
-        this.tileWidth = tileWidth;
-    }
-
-    public void setRoomLength(int roomLength) {
-        this.roomLength = roomLength;
-    }
-
-    public void setRoomWidth(int roomWidth) {
-        this.roomWidth = roomWidth;
-    }
-
-    public void setM2price(double m2price) {
-        this.m2price = m2price;
     }
 
     private long getArea(int length, int width) {
