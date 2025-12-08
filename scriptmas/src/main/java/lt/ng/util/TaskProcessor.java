@@ -1,6 +1,7 @@
 package lt.ng.util;
 
 import lt.ng.model.Clock;
+import lt.ng.model.LightsGenerator;
 import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
 import lt.ng.model.SeatCalculator;
@@ -58,6 +59,9 @@ public class TaskProcessor {
                 break;
             case 7:
                 calculateSeats();
+                break;
+            case 8:
+                generateChristmasLightsPattern();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -190,5 +194,15 @@ public class TaskProcessor {
         seatCalculator.calculateSeats();
 
         System.out.println(seatCalculator.getResults());
+    }
+
+    private void generateChristmasLightsPattern() {
+        int rows = ioManager.getIntInput(
+                "Please enter Christmas lights pattern size N (must be whole number): ",
+                1,
+                Integer.MAX_VALUE);
+        LightsGenerator lightsGenerator = new LightsGenerator(rows);
+
+        System.out.println(lightsGenerator.generatePattern());
     }
 }

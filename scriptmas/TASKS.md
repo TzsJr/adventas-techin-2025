@@ -135,3 +135,41 @@ Write a program that calculates <b>s</b>, the <b>total number of seats</b> Santa
 Help Santa make sure every elf gets a spot at the show!
 
 ---
+# 8th of December
+
+### Christmas Lights Pattern Generator
+
+Story
+
+Santa is testing a new <b>programmable Christmas lights system.</b> 
+Each house on the street displays a pattern of lights based on a numeric rule <b>N.</b> 
+
+Task Description
+
+Write a program that generates an <b>N × N Christmas Lights Grid.</b>
+
+Rules
+
+For each cell at position <b>(row, col):</b>
+- If <b>(row + col)</b> is divisible by <b>3</b>, print <b>T</b>
+- If divisible by <b>5</b>, print <b>S</b>
+- If divisible by <b>both 3 and 5</b>, print <b>G</b>
+- Otherwise, print <b>.</b>
+- Add a border of <b>#</b> around the grid.
+
+Row and column numbers start from <b>1.</b>
+
+Output for N = 6
+
+##############<br>
+#. T . . S T #<br>
+#T . . S T . #<br>
+#. . S T . . #<br>
+#. S T . . T #<br>
+#S T . . T S #<br>
+#T . . T S . #<br>
+##############
+
+(Spaces are for readability.)
+
+---
