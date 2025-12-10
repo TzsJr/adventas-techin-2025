@@ -9,6 +9,7 @@ import lt.ng.model.ToyCounter;
 import lt.ng.model.WeightCalculator;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import static java.time.Month.DECEMBER;
@@ -17,6 +18,7 @@ import static lt.ng.constant.ChristmasConstants.DIGITS;
 import static lt.ng.constant.ChristmasConstants.EXPENSIVE_PRICE;
 import static lt.ng.constant.ChristmasConstants.FESTIVE_MESSAGES;
 import static lt.ng.constant.ChristmasConstants.IMPLEMENTED_TASKS;
+import static lt.ng.constant.ChristmasConstants.MINUTES_PASSED;
 import static lt.ng.constant.ChristmasConstants.UNEXPECTED_VALUE;
 
 public class TaskProcessor {
@@ -36,6 +38,7 @@ public class TaskProcessor {
 
     public void processWantedTask() {
         int taskId = ioManager.getWantedTask(IMPLEMENTED_TASKS);
+        System.out.print("\n");
 
         switch (taskId) {
             case 0:
@@ -66,6 +69,9 @@ public class TaskProcessor {
                 break;
             case 9:
                 choosePerfectMelon();
+                break;
+            case 10:
+                calculateMysteryTime();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -225,5 +231,23 @@ public class TaskProcessor {
         weightCalculator.calculatePerfectMelonNumber();
 
         System.out.println(weightCalculator.getResults());
+    }
+
+    private void calculateMysteryTime() {
+        int hours = ioManager.getIntInput(
+                "Please enter magical clock hours (must be whole number): ",
+                0,
+                23);
+        int minutes = ioManager.getIntInput(
+                "Please enter magical clock minutes (must be whole number): ",
+                0,
+                59);
+        LocalTime now = LocalTime.of(hours, minutes);
+        LocalTime timeAfterRotation = now.plusMinutes(MINUTES_PASSED);
+
+        System.out.printf(
+                "If magical clock currently shows %s, then after a full 360° turn it will show %s.\n",
+                now,
+                timeAfterRotation);
     }
 }

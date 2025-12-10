@@ -5,7 +5,7 @@ public class ChristmasConstants {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 9;
+    public static int IMPLEMENTED_TASKS = 10;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -16,7 +16,8 @@ public class ChristmasConstants {
                     6: Santa’s Sleigh Flight Schedule (flight calculator)
                     7: Santa’s Christmas Concert Seating Plan (seat calculator)
                     8: Christmas Lights Pattern Generator
-                    9: Santa’s Perfect Christmas Melon (melon weight comparison)Im
+                    9: Santa’s Perfect Christmas Melon (melon weight comparison)
+                    10: Santa’s Spinning Clock Mystery
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -31,6 +32,8 @@ public class ChristmasConstants {
     public static int MINUTES_IN_H = 60;
     public static int SECONDS_IN_MIN = 60;
     public static double EXPENSIVE_PRICE = 10.0;
+    // If minute hand spins full 360°, exactly 1 hour will we passed (or 60 minutes)
+    public static int MINUTES_PASSED = 60;
     public static String[] DIGITS = {
             """
             

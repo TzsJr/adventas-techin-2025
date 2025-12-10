@@ -206,3 +206,18 @@ Output:<br>
 1 4.00
 
 ---
+# 10th of December
+
+### Santa’s Spinning Clock Mystery
+
+Santa looks at his magical clock, which currently shows <b>h hours</b> and <b>m minutes.</b> 
+But this isn’t an ordinary clock — the minute hand can magically spin a full <b>360° turn</b> in an instant!
+
+Your job is to determine <b>what time the clock will show</b> after the <b>minute hand completes one full rotation.</b>
+
+The hand spins all the way around, but the time still advances just like on a real clock! 
+That means: even though the hand spins super fast, we still treat it as if real time passed normally during that rotation.
+
+Help Santa keep track of time as he prepares for Christmas Eve!
+
+---
