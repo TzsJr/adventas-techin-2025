@@ -173,3 +173,36 @@ Output for N = 6
 (Spaces are for readability.)
 
 ---
+# 9th of December
+
+### Santa’s Perfect Christmas Melon
+
+Santa is at the North Pole Christmas Market looking for the perfect Christmas melon to take on his holiday journey. 
+All melons are lined up in order, each with a known weight.
+
+Santa wants to choose the melon whose weight is <b>closest to the average weight</b> of all melons — 
+not too heavy, not too light, but just right for Christmas magic!
+
+Your Task:<br>
+Write a program that:
+1. Calculates the <b>average weight</b> of all the Christmas melons.
+2. Finds the <b>index (number)</b> of the melon whose weight is <b>closest to this average</b>.
+3. Prints the melon number and the average weight (rounded to two decimal places).
+
+Input:
+- First value: <b>n</b> — the number of melons.
+- Next values: <b>n real numbers</b> — the weights of each melon.
+
+Output:<br>
+Print on one line:<br>
+<i>melonNumber averageWeight</i>
+
+Example:<br>
+Input:<br>
+4<br>
+4 3 7 8<br>
+
+Output:<br>
+1 4.00
+
+---

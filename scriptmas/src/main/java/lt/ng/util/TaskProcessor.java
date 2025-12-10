@@ -6,6 +6,7 @@ import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
 import lt.ng.model.SeatCalculator;
 import lt.ng.model.ToyCounter;
+import lt.ng.model.WeightCalculator;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -63,6 +64,9 @@ public class TaskProcessor {
             case 8:
                 generateChristmasLightsPattern();
                 break;
+            case 9:
+                choosePerfectMelon();
+                break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
                 return;
@@ -119,7 +123,7 @@ public class TaskProcessor {
     }
 
     private void countToys() {
-        List<Double> inputs = ioManager.getDecimalsInput(
+        List<Double> inputs = ioManager.getDecimalsInputUntilStop(
                 "Please enter toy prices (must be positive numbers), entered 0 means list is finished: ",
                 0.0,
                 Double.MAX_VALUE,
@@ -204,5 +208,22 @@ public class TaskProcessor {
         LightsGenerator lightsGenerator = new LightsGenerator(rows);
 
         System.out.println(lightsGenerator.getPattern());
+    }
+
+    private void choosePerfectMelon() {
+        int totalMelons = ioManager.getIntInput(
+                "Please enter the number of melons (must be whole number): ",
+                1,
+                Integer.MAX_VALUE);
+        List<Double> weightsOfMelons = ioManager.getNumberOfDecimalsInput(
+                String.format("Please enter the weight for no. %%d melon out of %d: ", totalMelons),
+                0.005,
+                Double.MAX_VALUE,
+                totalMelons);
+        WeightCalculator weightCalculator = new WeightCalculator(weightsOfMelons);
+        weightCalculator.calculateAverageWeight();
+        weightCalculator.calculatePerfectMelonNumber();
+
+        System.out.println(weightCalculator.getResults());
     }
 }
