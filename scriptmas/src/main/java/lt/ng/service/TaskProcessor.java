@@ -1,4 +1,4 @@
-package lt.ng.util;
+package lt.ng.service;
 
 import lt.ng.model.ArcheryCalculator;
 import lt.ng.model.ArcheryCalculator.Coordinate;
@@ -15,13 +15,13 @@ import java.time.LocalTime;
 import java.util.List;
 
 import static java.time.Month.DECEMBER;
-import static lt.ng.constant.ChristmasConstants.CONSOLE_CLEAR;
-import static lt.ng.constant.ChristmasConstants.DIGITS;
-import static lt.ng.constant.ChristmasConstants.EXPENSIVE_PRICE;
-import static lt.ng.constant.ChristmasConstants.FESTIVE_MESSAGES;
-import static lt.ng.constant.ChristmasConstants.IMPLEMENTED_TASKS;
-import static lt.ng.constant.ChristmasConstants.MINUTES_PASSED;
-import static lt.ng.constant.ChristmasConstants.UNEXPECTED_VALUE;
+import static lt.ng.util.constant.ChristmasConstants.CONSOLE_CLEAR;
+import static lt.ng.util.constant.ChristmasConstants.DIGITS;
+import static lt.ng.util.constant.ChristmasConstants.EXPENSIVE_PRICE;
+import static lt.ng.util.constant.ChristmasConstants.FESTIVE_MESSAGES;
+import static lt.ng.util.constant.ChristmasConstants.IMPLEMENTED_TASKS;
+import static lt.ng.util.constant.ChristmasConstants.MINUTES_PASSED;
+import static lt.ng.util.constant.ChristmasConstants.UNEXPECTED_VALUE;
 
 public class TaskProcessor {
     private final IOManager ioManager;

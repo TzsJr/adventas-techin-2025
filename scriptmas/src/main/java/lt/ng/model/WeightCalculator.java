@@ -1,8 +1,8 @@
 package lt.ng.model;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
+
+import static lt.ng.util.NumberUtils.roundWithPrecision;
 
 public class WeightCalculator {
     private final List<Double> weightsOfMelons;
@@ -22,7 +22,7 @@ public class WeightCalculator {
             totalWeight += melonWeight;
         }
 
-        averageWeight = round(totalWeight / totalMelons, 2);
+        averageWeight = roundWithPrecision(totalWeight / totalMelons, 2);
     }
 
     public void calculatePerfectMelonNumber() {
@@ -59,10 +59,5 @@ public class WeightCalculator {
                 weightOfPerfectMelon,
                 numberOfPerfectMelon,
                 weightOfPerfectMelon);
-    }
-
-    private double round(double number, int precision) {
-        BigDecimal bdNumber = BigDecimal.valueOf(number);
-        return Double.parseDouble(bdNumber.setScale(precision, RoundingMode.UP).toString());
     }
 }

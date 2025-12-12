@@ -1,12 +1,6 @@
 package lt.ng.model;
 
-public class LightsGenerator {
-    private final int rows;
-
-    public LightsGenerator(int rows) {
-        this.rows = rows;
-    }
-
+public record LightsGenerator(int rows) {
     public String getPattern() {
         String[][] pattern = fillPattern();
 

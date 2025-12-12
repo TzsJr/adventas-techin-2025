@@ -1,4 +1,4 @@
-package lt.ng.util;
+package lt.ng.service;
 
 import lt.ng.model.ArcheryCalculator.Coordinate;
 
@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import static lt.ng.constant.ChristmasConstants.GOODBYE;
-import static lt.ng.constant.ChristmasConstants.ILLEGAL;
-import static lt.ng.constant.ChristmasConstants.ILLEGAL_OR_HIGH;
-import static lt.ng.constant.ChristmasConstants.TASKS_DESCRIPTION;
-import static lt.ng.constant.ChristmasConstants.TOO_HIGH;
-import static lt.ng.constant.ChristmasConstants.TOO_LOW;
-import static lt.ng.constant.ChristmasConstants.WELCOME;
-import static lt.ng.constant.ChristmasConstants.WRONG_VALUE;
+import static lt.ng.util.constant.ChristmasConstants.GOODBYE;
+import static lt.ng.util.constant.ChristmasConstants.ILLEGAL;
+import static lt.ng.util.constant.ChristmasConstants.ILLEGAL_OR_HIGH;
+import static lt.ng.util.constant.ChristmasConstants.TASKS_DESCRIPTION;
+import static lt.ng.util.constant.ChristmasConstants.TOO_HIGH;
+import static lt.ng.util.constant.ChristmasConstants.TOO_LOW;
+import static lt.ng.util.constant.ChristmasConstants.WELCOME;
+import static lt.ng.util.constant.ChristmasConstants.WRONG_VALUE;
 
 public class IOManager {
     private final Scanner userInput = new Scanner(System.in);
@@ -85,7 +85,7 @@ public class IOManager {
     }
 
     public List<Double> getDecimalsInputUntilStop(String message, double lowLimit, double highLimit, double stopValue) {
-        boolean isValidValue = false;
+        boolean isValidValueOrEnough = false;
         double doubleValue;
         List<Double> doubleValues = new ArrayList<>();
 
@@ -94,28 +94,28 @@ public class IOManager {
             try {
                 doubleValue = userInput.nextDouble();
                 if (doubleValue < lowLimit) {
-                    isValidValue = reportErrorReturnNotValid(TOO_LOW);
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_LOW);
                     continue;
                 } else if (doubleValue > highLimit) {
-                    isValidValue = reportErrorReturnNotValid(TOO_HIGH);
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_HIGH);
                     continue;
                 }
                 doubleValues.add(doubleValue);
                 if (doubleValue == stopValue) {
-                    isValidValue = true;
+                    isValidValueOrEnough = true;
                 }
                 userInput.nextLine();
             } catch (InputMismatchException e) {
-                isValidValue = reportErrorReturnNotValid(ILLEGAL_OR_HIGH);
+                isValidValueOrEnough = reportErrorReturnNotValid(ILLEGAL_OR_HIGH);
                 userInput.nextLine();
             }
-        } while (!isValidValue);
+        } while (!isValidValueOrEnough);
 
         return doubleValues;
     }
 
     public List<Double> getNumberOfDecimalsInput(String message, double lowLimit, double highLimit, int totalNumbers) {
-        boolean isValidValue = false;
+        boolean isValidValueOrEnough = false;
         double doubleValue;
         List<Double> doubleValues = new ArrayList<>();
 
@@ -124,22 +124,22 @@ public class IOManager {
             try {
                 doubleValue = userInput.nextDouble();
                 if (doubleValue < lowLimit) {
-                    isValidValue = reportErrorReturnNotValid(TOO_LOW);
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_LOW);
                     continue;
                 } else if (doubleValue > highLimit) {
-                    isValidValue = reportErrorReturnNotValid(TOO_HIGH);
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_HIGH);
                     continue;
                 }
                 doubleValues.add(doubleValue);
                 if (doubleValues.size() == totalNumbers) {
-                    isValidValue = true;
+                    isValidValueOrEnough = true;
                 }
                 userInput.nextLine();
             } catch (InputMismatchException e) {
-                isValidValue = reportErrorReturnNotValid(ILLEGAL_OR_HIGH);
+                isValidValueOrEnough = reportErrorReturnNotValid(ILLEGAL_OR_HIGH);
                 userInput.nextLine();
             }
-        } while (!isValidValue);
+        } while (!isValidValueOrEnough);
 
         return doubleValues;
     }

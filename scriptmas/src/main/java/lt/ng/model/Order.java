@@ -1,20 +1,19 @@
 package lt.ng.model;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import static lt.ng.constant.ChristmasConstants.EXTRA_TILES_PERCENT;
+import static lt.ng.util.constant.ChristmasConstants.EXTRA_TILES_PERCENT;
+import static lt.ng.util.NumberUtils.round;
+import static lt.ng.util.NumberUtils.roundWithPrecision;
 
 public class Order {
-    private int tileLength;
-    private int tileWidth;
+    private final int tileLength;
+    private final int tileWidth;
     private long tileArea;
-    private int roomLength;
-    private int roomWidth;
+    private final int roomLength;
+    private final int roomWidth;
     private long roomArea;
     private int tileAmount;
     private int tileTotalAmount;
-    private double m2price;
+    private final double m2price;
     private double totalCost;
 
     public Order(int tileLength, int tileWidth, int roomLength, int roomWidth, double m2price) {
@@ -31,7 +30,7 @@ public class Order {
         tileAmount = round((double) roomArea / tileArea);
         double extraTiles = (double) (tileAmount * EXTRA_TILES_PERCENT) / 100;
         tileTotalAmount = round(extraTiles + tileAmount);
-        totalCost = round(tileTotalAmount * m2price, 2);
+        totalCost = roundWithPrecision(tileTotalAmount * m2price, 2);
     }
 
     public String getOrderInvoice() {
@@ -54,15 +53,5 @@ public class Order {
 
     private long getArea(int length, int width) {
         return (long) length * width;
-    }
-
-    private int round(double number) {
-        BigDecimal bdNumber = BigDecimal.valueOf(number);
-        return Integer.parseInt(bdNumber.setScale(0, RoundingMode.UP).toString());
-    }
-
-    private double round(double number, int precision) {
-        BigDecimal bdNumber = BigDecimal.valueOf(number);
-        return Double.parseDouble(bdNumber.setScale(precision, RoundingMode.UP).toString());
     }
 }

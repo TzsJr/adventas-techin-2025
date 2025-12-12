@@ -1,7 +1,7 @@
 package lt.ng.model;
 
-import static lt.ng.constant.ChristmasConstants.MINUTES_IN_H;
-import static lt.ng.constant.ChristmasConstants.SECONDS_IN_MIN;
+import static lt.ng.util.constant.ChristmasConstants.MINUTES_IN_H;
+import static lt.ng.util.constant.ChristmasConstants.SECONDS_IN_MIN;
 
 public class Clock {
     private final int x;

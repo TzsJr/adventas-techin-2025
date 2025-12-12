@@ -1,4 +1,4 @@
-package lt.ng.constant;
+package lt.ng.util.constant;
 
 public class ChristmasConstants {
     private ChristmasConstants() {

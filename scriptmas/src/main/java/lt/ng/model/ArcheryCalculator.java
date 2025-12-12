@@ -3,13 +3,13 @@ package lt.ng.model;
 import java.util.List;
 
 public class ArcheryCalculator {
-    private Coordinate center;
-    private double smallRadius;
-    private double mediumRadius;
-    private double bigRadius;
-    private double smallPointValue;
-    private double mediumPointValue;
-    private double bigPointValue;
+    private final Coordinate center;
+    private final double smallRadius;
+    private final double mediumRadius;
+    private final double bigRadius;
+    private final double smallPointValue;
+    private final double mediumPointValue;
+    private final double bigPointValue;
     private List<Coordinate> shots;
     private double totalPoints;
 
