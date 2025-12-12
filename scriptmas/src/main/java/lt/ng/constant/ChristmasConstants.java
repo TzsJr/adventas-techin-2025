@@ -5,7 +5,7 @@ public class ChristmasConstants {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 10;
+    public static int IMPLEMENTED_TASKS = 11;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -18,6 +18,7 @@ public class ChristmasConstants {
                     8: Christmas Lights Pattern Generator
                     9: Santa’s Perfect Christmas Melon (melon weight comparison)
                     10: Santa’s Spinning Clock Mystery
+                    11: Santa’s Magical Archery Challenge (points calculator)
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -25,6 +26,7 @@ public class ChristmasConstants {
     public static String TOO_LOW = "Value too low!";
     public static String TOO_HIGH = "Value too high!";
     public static String ILLEGAL_OR_HIGH = "Value illegal or too high!";
+    public static String ILLEGAL = "Value illegal!";
     public static String WRONG_VALUE = "Wrong value! %s\n";
     public static String UNEXPECTED_VALUE = "Something unexpected entered: %d\n";
     public static String CONSOLE_CLEAR = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";

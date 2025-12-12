@@ -1,11 +1,15 @@
 package lt.ng.util;
 
+import lt.ng.model.ArcheryCalculator.Coordinate;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import static lt.ng.constant.ChristmasConstants.GOODBYE;
+import static lt.ng.constant.ChristmasConstants.ILLEGAL;
 import static lt.ng.constant.ChristmasConstants.ILLEGAL_OR_HIGH;
 import static lt.ng.constant.ChristmasConstants.TASKS_DESCRIPTION;
 import static lt.ng.constant.ChristmasConstants.TOO_HIGH;
@@ -138,6 +142,54 @@ public class IOManager {
         } while (!isValidValue);
 
         return doubleValues;
+    }
+
+    public List<Coordinate> getNumberOfCoordinates(
+            String message,
+            double lowLimit,
+            double highLimit,
+            int totalCoordinates,
+            boolean center
+    ) {
+        boolean isValidValueOrEnough = false;
+        double x;
+        double y;
+        String input;
+        List<Coordinate> coordinates = new ArrayList<>();
+
+        do {
+            if (center) {
+                System.out.println(message);
+            } else {
+                System.out.printf(message + "\n", coordinates.size() + 1);
+            }
+            try {
+                input = userInput.nextLine();
+                String[] coordinateStr =
+                        input.replace("(", "").replace(")", "").split(",");
+                x = Double.parseDouble(coordinateStr[0].trim());
+                y = Double.parseDouble(coordinateStr[1].trim());
+                if (x < lowLimit || y < lowLimit) {
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_LOW);
+                    continue;
+                } else if (x > highLimit || y > highLimit) {
+                    isValidValueOrEnough = reportErrorReturnNotValid(TOO_HIGH);
+                    continue;
+                }
+                coordinates.add(new Coordinate(x, y));
+                if (coordinates.size() == totalCoordinates) {
+                    isValidValueOrEnough = true;
+                }
+            } catch (NoSuchElementException
+                     | NullPointerException
+                     | NumberFormatException
+                     | ArrayIndexOutOfBoundsException e
+            ) {
+                isValidValueOrEnough = reportErrorReturnNotValid(ILLEGAL);
+            }
+        } while (!isValidValueOrEnough);
+
+        return coordinates;
     }
 
     private boolean reportErrorReturnNotValid(String message) {

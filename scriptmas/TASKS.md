@@ -221,3 +221,28 @@ That means: even though the hand spins super fast, we still treat it as if real 
 Help Santa keep track of time as he prepares for Christmas Eve!
 
 ---
+# 11th of December
+
+### Santa’s Magical Archery Challenge
+
+The annual <b>North Pole Archery Tournament</b> is underway! 
+Santa’s target is mounted on a special board equipped with magical electronic sensors. 
+The lower-left corner of the board has coordinates <b>(0, 0)</b>.
+
+At the center of the target there is a black circle, and around it Santa has drawn <b>three additional rings</b>, 
+each worth a different number of points. When an elf shoots an arrow, the sensors detect exactly where it lands.
+
+Your task is to write a program that calculates <b>how many points</b> the elf earns based on the arrow’s landing position.
+
+You are given:
+- <b>(xc, yc)</b> — the coordinates of the target’s center
+- The <b>radius</b> of each ring
+- The <b>(x, y)</b> coordinates where the arrow landed
+- The <b>point values</b> for each ring
+
+<b>Scoring rule:</b> If the arrow lands <b>exactly on a ring boundary</b>, 
+the elf earns <b>half</b> of the points that would be awarded if the arrow had landed inside that ring.
+
+Help Santa score the competition correctly so he can award the Golden Candy Cane Trophy!
+
+---

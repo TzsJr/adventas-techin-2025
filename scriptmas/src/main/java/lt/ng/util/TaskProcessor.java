@@ -1,5 +1,7 @@
 package lt.ng.util;
 
+import lt.ng.model.ArcheryCalculator;
+import lt.ng.model.ArcheryCalculator.Coordinate;
 import lt.ng.model.Clock;
 import lt.ng.model.LightsGenerator;
 import lt.ng.model.NumberTrimmer;
@@ -72,6 +74,9 @@ public class TaskProcessor {
                 break;
             case 10:
                 calculateMysteryTime();
+                break;
+            case 11:
+                calculatePoints();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -249,5 +254,70 @@ public class TaskProcessor {
                 "If magical clock currently shows %s, then after a full 360° turn it will show %s.\n",
                 now,
                 timeAfterRotation);
+    }
+
+    private void calculatePoints() {
+        Coordinate center = ioManager.getNumberOfCoordinates(
+                "Please enter target's center coordinates in format x,y or (x,y): ",
+                0.1,
+                Double.MAX_VALUE,
+                1,
+                true
+        ).getFirst();
+        double centerMin = Math.min(center.x(), center.y());
+        double bigRadius = ioManager.getDecimalInput(
+                "Please enter big ring radius: ",
+                0.1,
+                centerMin
+        );
+        double mediumRadius = ioManager.getDecimalInput(
+                "Please enter small ring radius: ",
+                0.1,
+                bigRadius
+        );
+        double smallRadius = ioManager.getDecimalInput(
+                "Please enter small ring radius: ",
+                0.1,
+                mediumRadius
+        );
+        double bigPointValue = ioManager.getDecimalInput(
+                "Please enter big ring points: ",
+                0.1,
+                Double.MAX_VALUE
+        );
+        double mediumPointValue = ioManager.getDecimalInput(
+                "Please enter medium ring points: ",
+                0.1,
+                Double.MAX_VALUE
+        );
+        double smallPointValue = ioManager.getDecimalInput(
+                "Please enter small ring points: ",
+                0.1,
+                Double.MAX_VALUE
+        );
+        ArcheryCalculator calculator = new ArcheryCalculator(
+                center,
+                smallRadius,
+                mediumRadius,
+                bigRadius,
+                smallPointValue,
+                mediumPointValue,
+                bigPointValue);
+
+        int totalShots = ioManager.getIntInput(
+                "Please enter the number of shots (must be whole number): ",
+                1,
+                Integer.MAX_VALUE);
+        List<Coordinate> madeShots = ioManager.getNumberOfCoordinates(
+                String.format("Please enter %%d shot, out of %d, coordinates in format x,y or (x,y): ", totalShots),
+                0.1,
+                centerMin * 2,
+                totalShots,
+                false
+        );
+        calculator.addShots(madeShots);
+        calculator.calculatePoints();
+
+        System.out.println(calculator.getResults());
     }
 }
