@@ -15,6 +15,7 @@ Santa always buys <b>5% extra tiles</b> to cover possible losses.
 <b>Your task:</b> Compute the total amount <b>totalCost</b> Santa needs to pay for all the tiles, including the extra 5%.
 
 ---
+
 # 2nd of December
 
 ### Santa’s Midnight Clock Countdown
@@ -33,6 +34,7 @@ Write a program that calculates:
 Help Santa keep track of time before the Christmas rush begins!
 
 ---
+
 # 3rd of December
 
 ### Santa’s Number-Trimming Magic
@@ -48,6 +50,7 @@ Example: If Santa’s number is <b>1235</b>, then the new number should be: <b>1
 Help Santa tidy up his list before Christmas Eve!
 
 ---
+
 # 4th of December
 
 ### Gift Bag
@@ -70,6 +73,7 @@ Output should be:
 - Number of magical toys: <b>2</b>
 
 ---
+
 # 5th of December
 
 ### Santa’s Magical ASCII Countdown
@@ -97,6 +101,7 @@ Create a program that:
 Digit array : https://github.com/tuleelut/techin_scriptmas_2025.git 
 
 ---
+
 # 6th of December
 
 ### Santa’s Sleigh Flight Schedule
@@ -119,6 +124,7 @@ Keep in mind that <b>c can be large</b>, meaning Santa might land <b>after midni
 Help Santa keep his schedule on time—Christmas depends on it!
 
 ---
+
 # 7th of December
 
 ### Santa’s Christmas Concert Seating Plan
@@ -135,6 +141,7 @@ Write a program that calculates <b>s</b>, the <b>total number of seats</b> Santa
 Help Santa make sure every elf gets a spot at the show!
 
 ---
+
 # 8th of December
 
 ### Christmas Lights Pattern Generator
@@ -173,6 +180,7 @@ Output for N = 6
 (Spaces are for readability.)
 
 ---
+
 # 9th of December
 
 ### Santa’s Perfect Christmas Melon
@@ -206,6 +214,7 @@ Output:<br>
 1 4.00
 
 ---
+
 # 10th of December
 
 ### Santa’s Spinning Clock Mystery
@@ -221,6 +230,7 @@ That means: even though the hand spins super fast, we still treat it as if real 
 Help Santa keep track of time as he prepares for Christmas Eve!
 
 ---
+
 # 11th of December
 
 ### Santa’s Magical Archery Challenge
@@ -246,6 +256,7 @@ the elf earns <b>half</b> of the points that would be awarded if the arrow had l
 Help Santa score the competition correctly so he can award the Golden Candy Cane Trophy!
 
 ---
+
 # 12th of December
 
 ### Santa’s Magic Word Workshop — Anagram Groups

@@ -47,3 +47,10 @@ Išspręstas užduotis įkelk į savo viešą GitHub repozitoriją iki 2026 m. s
    - Iki 2026-01-04 23.59 val. atliktų užduočių kiekis.
 
 ---
+
+# Rastos klaidos/neatitikimai pavyzdžiuose
+
+- 8th of December. Blogai sugeneruotas raštas pavyzdyje. (1,4) langelyje yra '.' nors turėtų būti 'S'. Atitinkamai bloga suma kartojasi ir kituose tolesniuose langeliuose.
+- 13th of December. Sąlygoje nurodyta, jog merginų vardai baigiasi 'a', tačiau pavyzdyje pateikta ir 'Akvilė', kurios vardas baigiasi 'ė'.
+
+---
