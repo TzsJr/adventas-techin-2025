@@ -298,3 +298,45 @@ Rules
 - The solution should be <b>efficient</b> for large word lists
 
 ---
+
+# 13th of December
+
+### Christmas School – Student Name Magic
+
+At the North Pole Christmas School, Santa keeps a magical student list. 
+He wants to know <b>how many students are girls</b>, based on a simple Christmas rule:<br>
+<b>Girls’ first names end with the letter ‘a’ Boys’ names do not.</b>
+
+You are given the list of students in the form:<br>
+<i>LastName FirstName</i><br>
+written exactly like Santa keeps them in his book.
+
+Your task is to help Santa count all girls and then list them.
+
+<b>Your Task</b>
+Write a program that:
+1. Stores all student names in an <b>array or object.</b>
+2. Counts how many students are <b>girls</b> (their first name ends with ‘a’).
+3. Prints:
+   - First line: <b>number of girls</b>
+   - Next lines: <b>each girl’s full name</b> written in the same “LastName FirstName” format
+
+<b>Input</b><br>
+For example:<br>
+const students = [<br>
+"Petraitis Rokas",<br>
+"Augė Artūras",<br>
+"Mikalauskaitė Aušra",<br>
+"Šlivka Donatas",<br>
+"Stakėnaitė Ieva",<br>
+"Skrėbė Domas",<br>
+"Bruzgaitė Akvilė"<br>
+];
+
+<b>Output Example</b><br>
+3<br>
+Mikalauskaitė Aušra<br>
+Stakėnaitė Ieva<br>
+Bruzgaitė Akvilė<br>
+
+---

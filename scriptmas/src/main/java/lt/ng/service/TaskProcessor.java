@@ -8,6 +8,7 @@ import lt.ng.model.LightsGenerator;
 import lt.ng.model.NumberTrimmer;
 import lt.ng.model.Order;
 import lt.ng.model.SeatCalculator;
+import lt.ng.model.Students;
 import lt.ng.model.ToyCounter;
 import lt.ng.model.WeightCalculator;
 
@@ -81,6 +82,9 @@ public class TaskProcessor {
                 break;
             case 12:
                 groupWords();
+                break;
+            case 13:
+                filterGirls();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -332,5 +336,17 @@ public class TaskProcessor {
         anagramSorter.groupWords();
 
         System.out.println(anagramSorter.getResults());
+    }
+
+    private void filterGirls() {
+        List<String> names = ioManager.getWords("""
+                Please enter students. Valid formats:
+                LastName1 FirstName1, LastName2 FirstName2
+                or
+                ["LastName1 FirstName", "LastName2 FirstName2"]""");
+        Students students = new Students(names);
+        students.calculateGirls();
+
+        System.out.println(students.getGirls());
     }
 }

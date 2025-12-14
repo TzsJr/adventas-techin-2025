@@ -57,14 +57,14 @@ public class AnagramSorter {
     }
 
     public String getResults() {
-        return String.format("Grouped anagram words: \n[\n%s\n]", mapToString());
+        return String.format("Grouped anagram words: \n[\n%s\n]", mapToString(groupedWords));
     }
 
-    private String mapToString() {
+    private String mapToString(Map<String, List<String>> map) {
         StringBuilder sb = new StringBuilder();
-        groupedWords.forEach((key, words) -> {
+        map.forEach((key, value) -> {
             sb.append("\t[");
-            words.forEach(word -> sb.append("\"").append(word).append("\", "));
+            value.forEach(word -> sb.append("\"").append(word).append("\", "));
             int length = sb.length();
             sb.replace(length - 2, length - 1, "],\n");
         });
