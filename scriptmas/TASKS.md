@@ -340,3 +340,51 @@ Stakėnaitė Ieva<br>
 Bruzgaitė Akvilė<br>
 
 ---
+
+# 14th of December
+
+### Santa’s Gift Cart Engine
+
+Story<br>
+Santa is testing a brand-new <b>digital gift cart system</b> for his workshop! 
+Before Christmas Eve, he needs <b>your help</b> to make sure the cart correctly tracks gifts, prevents duplicates, and applies magical promo codes.
+
+Each gift has:
+- A unique <b>gift ID</b>
+- A <b>price</b> in candy canes
+
+Task<br>
+Implement a <b>Santa’s Gift Cart Engine</b> with the following methods:<br>
+<i>cart.add(id, price)</i>              // Add a gift to the cart<br>
+<i>cart.remove(id)</i>                  // Remove a gift from the cart<br>
+<i>cart.total()</i>                     // Return total price of all gifts<br>
+<i>cart.applyDiscount("PROMO10")</i>    // Apply a magical promo code<br>
+
+Rules from Santa’s Workshop
+- Promo codes are stored in an object:<br>
+    {<br>
+      PROMO10: 0.10,<br>
+      PROMO25: 0.25,<br>
+      SANTA50: 0.50<br>
+    }<br>
+- Each <b>gift ID must be unique</b> — no duplicate presents in Santa’s sack!
+- total() must <b>always return the correct final amount</b>, including discounts
+- Removing a gift <b>immediately updates the total</b>
+- Invalid promo codes should be <b>ignored safely</b>
+- The cart must <b>persist its internal state correctly</b>
+
+Example<br>
+<i>cart.add("train", 30)<br>
+cart.add("doll", 20)<br>
+cart.applyDiscount("PROMO10")<br>
+cart.total()    // 45<br>
+cart.remove("train")<br>
+cart.total()    // 18</i><br>
+
+Bonus Challenges (Extra Elf Points)
+- Prevent negative prices
+- Allow only <b>one promo code at a time</b>
+- Add <i>cart.clear()</i> method for Santa’s reset button
+- Return full cart content with <i>cart.list()</i>
+
+---

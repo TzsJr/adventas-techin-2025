@@ -3,6 +3,7 @@ package lt.ng.service;
 import lt.ng.model.AnagramSorter;
 import lt.ng.model.ArcheryCalculator;
 import lt.ng.model.ArcheryCalculator.Coordinate;
+import lt.ng.model.CartSystem;
 import lt.ng.model.Clock;
 import lt.ng.model.LightsGenerator;
 import lt.ng.model.NumberTrimmer;
@@ -85,6 +86,9 @@ public class TaskProcessor {
                 break;
             case 13:
                 filterGirls();
+                break;
+            case 14:
+                processGiftCart();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -348,5 +352,46 @@ public class TaskProcessor {
         students.calculateGirls();
 
         System.out.println(students.getGirls());
+    }
+
+    private void processGiftCart() {
+        CartSystem cart = new CartSystem();
+        cart.add("train", 30);
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.add("train", 10);
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.add("doll", 20);
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.add("something", -2);
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.list();
+        System.out.println();
+        cart.applyDiscount("PROMO25");
+        System.out.println();
+        cart.applyDiscount("PROMO50");
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.list();
+        System.out.println();
+        cart.remove("train");
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.list();
+        System.out.println();
+        cart.clear();
+        System.out.println();
+        cart.total();
+        System.out.println();
+        cart.list();
     }
 }

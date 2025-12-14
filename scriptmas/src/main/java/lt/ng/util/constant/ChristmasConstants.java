@@ -1,11 +1,14 @@
 package lt.ng.util.constant;
 
+import java.math.BigDecimal;
+import java.util.Map;
+
 public class ChristmasConstants {
     private ChristmasConstants() {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 13;
+    public static int IMPLEMENTED_TASKS = 14;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -21,6 +24,7 @@ public class ChristmasConstants {
                     11: Santa’s Magical Archery Challenge (points calculator)
                     12: Santa’s Magic Word Workshop — Anagram Groups
                     13: Christmas School – Student Name Magic (girls list)
+                    14: Santa’s Gift Cart Engine
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -39,6 +43,10 @@ public class ChristmasConstants {
     // If minute hand spins full 360°, exactly 1 hour will we passed (or 60 minutes)
     public static int MINUTES_PASSED = 60;
     public static String GIRLS_NAME_SUFFIX = "a";
+    public static Map<String, BigDecimal> CART_PROMO_CODES = Map.of(
+            "PROMO10", new BigDecimal("0.10"),
+            "PROMO25", new BigDecimal("0.25"),
+            "SANTA50", new BigDecimal("0.50"));
     public static String[] DIGITS = {
             """
             
