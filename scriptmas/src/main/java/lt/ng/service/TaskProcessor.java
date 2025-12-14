@@ -1,5 +1,6 @@
 package lt.ng.service;
 
+import lt.ng.model.AnagramSorter;
 import lt.ng.model.ArcheryCalculator;
 import lt.ng.model.ArcheryCalculator.Coordinate;
 import lt.ng.model.Clock;
@@ -77,6 +78,9 @@ public class TaskProcessor {
                 break;
             case 11:
                 calculatePoints();
+                break;
+            case 12:
+                groupWords();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -319,5 +323,14 @@ public class TaskProcessor {
         calculator.calculatePoints();
 
         System.out.println(calculator.getResults());
+    }
+
+    private void groupWords() {
+        List<String> words = ioManager.getWords(
+                "Please enter words array. Valid formats: \nword1,word2,word3 \nor \n[\"word1\",\"word2\",\"word3\"]: ");
+        AnagramSorter anagramSorter = new AnagramSorter(words);
+        anagramSorter.groupWords();
+
+        System.out.println(anagramSorter.getResults());
     }
 }

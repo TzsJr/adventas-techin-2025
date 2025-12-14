@@ -192,6 +192,29 @@ public class IOManager {
         return coordinates;
     }
 
+    public List<String> getWords(String message) {
+        boolean isValid;
+        String inputLine;
+        List<String> inputs = new ArrayList<>();
+
+        do {
+            System.out.println(message);
+            try {
+                inputLine = userInput.nextLine();
+                inputs.addAll(List.of(inputLine
+                        .replace("[", "")
+                        .replace("]", "")
+                        .replace("\"", "")
+                        .split(",")));
+                isValid = true;
+            } catch (NoSuchElementException | NullPointerException e) {
+                isValid = reportErrorReturnNotValid(ILLEGAL);
+            }
+        } while (!isValid);
+
+        return inputs;
+    }
+
     private boolean reportErrorReturnNotValid(String message) {
         System.out.printf(WRONG_VALUE, message);
         return false;

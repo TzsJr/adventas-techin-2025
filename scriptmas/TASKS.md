@@ -246,3 +246,44 @@ the elf earns <b>half</b> of the points that would be awarded if the arrow had l
 Help Santa score the competition correctly so he can award the Golden Candy Cane Trophy!
 
 ---
+# 12th of December
+
+### Santa’s Magic Word Workshop — Anagram Groups
+
+Story<br>
+Santa’s elves are preparing Christmas decorations, but their magic word machine has <b>scrambled the letters</b> of many festive words! 
+Your job is to <b>help Santa group together all the words that are made of the same letters</b> — only rearranged differently.
+
+Each group represents <b>one magical decoration pattern.</b>
+
+Task<br>
+Write a function that <b>groups together all Christmas word anagrams.</b>
+
+Two words belong in the same group if:
+- They contain <b>exactly the same letters</b>
+- The order of letters may differ
+
+Input<br>
+An array of scrambled Christmas-related words:<br>
+["eat", "tea", "tan", "ate", "nat", "bat"]
+
+
+Output<br>
+Return an array of grouped anagram words:<br>
+[<br>
+["eat", "tea", "ate"],<br>
+["tan", "nat"],<br>
+["bat"]<br>
+]
+
+Each inner array represents <b>one anagram family</b> created by the elves.
+
+Bonus (Optional for Extra Elf Points)
+- Sort each group <b>alphabetically</b>
+- Sort all groups by <b>group size (largest first)</b>
+
+Rules
+- Do <b>not</b> use built-in anagram check libraries
+- The solution should be <b>efficient</b> for large word lists
+
+---
