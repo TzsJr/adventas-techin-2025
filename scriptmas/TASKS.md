@@ -388,3 +388,31 @@ Bonus Challenges (Extra Elf Points)
 - Return full cart content with <i>cart.list()</i>
 
 ---
+
+# 15th of December
+
+### Peter’s Christmas Shopping Dilemma
+
+Peter wants to buy <b>one</b> Christmas gift. He has three options:
+- A <b>book</b> costing x euros
+- A <b>music CD</b> costing y euros
+- A <b>USB memory stick</b> costing z euros
+
+Peter will always buy the <b>cheapest</b> of the three items.
+
+Your task is to determine <b>how much money Peter will spend.</b>
+
+Input<br>
+Three real numbers (decimals), each on the same line or separated by spaces:
+- x – price of the book in euros
+- y – price of the CD in euros
+- z – price of the USB stick in euros
+
+Output<br>
+Print <b>one real number</b> – the <b>smallest</b> of the three prices.
+
+You may:
+- print it with <b>two decimal places</b>, e.g. <i>7.24</i>
+- optionally add text like <i>Peter will spend 7.24.</i>
+
+---

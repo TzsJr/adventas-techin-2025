@@ -11,9 +11,11 @@ import java.util.Scanner;
 import static lt.ng.util.constant.ChristmasConstants.GOODBYE;
 import static lt.ng.util.constant.ChristmasConstants.ILLEGAL;
 import static lt.ng.util.constant.ChristmasConstants.ILLEGAL_OR_HIGH;
+import static lt.ng.util.constant.ChristmasConstants.NOT_ENOUGH;
 import static lt.ng.util.constant.ChristmasConstants.TASKS_DESCRIPTION;
 import static lt.ng.util.constant.ChristmasConstants.TOO_HIGH;
 import static lt.ng.util.constant.ChristmasConstants.TOO_LOW;
+import static lt.ng.util.constant.ChristmasConstants.TOO_MUCH;
 import static lt.ng.util.constant.ChristmasConstants.WELCOME;
 import static lt.ng.util.constant.ChristmasConstants.WRONG_VALUE;
 
@@ -213,6 +215,48 @@ public class IOManager {
         } while (!isValid);
 
         return inputs;
+    }
+
+    public double[] getNumberOfDecimalsInputFromLine(String message, double lowLimit, double highLimit, int totalNumbers) {
+        boolean isValidValue = false;
+        String line;
+        String[] values;
+        double[] doubleValues = new double[totalNumbers];
+
+        do {
+            System.out.println(message);
+            try {
+                line = userInput.nextLine();
+                values = line.split(" ");
+                if (values.length < doubleValues.length) {
+                    isValidValue = reportErrorReturnNotValid(NOT_ENOUGH);
+                    continue;
+                } else if (values.length > doubleValues.length) {
+                    isValidValue = reportErrorReturnNotValid(TOO_MUCH);
+                    continue;
+                }
+
+                for (int i = 0; i < totalNumbers; i++) {
+                    double doubleValue = Double.parseDouble(values[i]);
+                    if (doubleValue < lowLimit) {
+                        isValidValue = reportErrorReturnNotValid(TOO_LOW);
+                        break;
+                    } else if (doubleValue > highLimit) {
+                        isValidValue = reportErrorReturnNotValid(TOO_HIGH);
+                        break;
+                    }
+
+                    doubleValues[i] = doubleValue;
+                    if (i == totalNumbers - 1) {
+                        isValidValue = true;
+                    }
+                }
+            } catch (NoSuchElementException | NullPointerException | NumberFormatException e) {
+                isValidValue = reportErrorReturnNotValid(ILLEGAL);
+            }
+        } while (!isValidValue);
+
+        return doubleValues;
     }
 
     private boolean reportErrorReturnNotValid(String message) {

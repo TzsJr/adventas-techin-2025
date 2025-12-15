@@ -18,6 +18,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import static java.time.Month.DECEMBER;
+import static lt.ng.util.NumberUtils.roundWithPrecision;
 import static lt.ng.util.constant.ChristmasConstants.CONSOLE_CLEAR;
 import static lt.ng.util.constant.ChristmasConstants.DIGITS;
 import static lt.ng.util.constant.ChristmasConstants.EXPENSIVE_PRICE;
@@ -89,6 +90,9 @@ public class TaskProcessor {
                 break;
             case 14:
                 processGiftCart();
+                break;
+            case 15:
+                calculateCheapestGift();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -393,5 +397,17 @@ public class TaskProcessor {
         cart.total();
         System.out.println();
         cart.list();
+    }
+
+    private void calculateCheapestGift() {
+        double[] prices = ioManager.getNumberOfDecimalsInputFromLine(
+                "Please enter prices of book, music CD and USB memory stick: ",
+                0.0,
+                Double.MAX_VALUE,
+                3);
+        double firstMin = Math.min(prices[0], prices[1]);
+        double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2);
+
+        System.out.printf("Peter will spend %.2f.\n", finalMin);
     }
 }
