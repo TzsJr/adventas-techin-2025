@@ -416,3 +416,43 @@ You may:
 - optionally add text like <i>Peter will spend 7.24.</i>
 
 ---
+
+# 16th of December
+
+### Santa’s Gift Audit
+
+Santa Claus has just finished visiting all the workshops at the North Pole! Each workshop is run by a team of elves, 
+and each elf is responsible for producing a certain number of gifts.
+
+Your task is to help Santa <b>count gifts using nested loops.</b>
+
+Task Description<br>
+There are <b>W workshops</b>. In each workshop, there are <b>E elves</b>. Every elf produced <b>G gifts</b>, but the amount varies per elf.
+
+You are given a 2D structure (array of arrays) where:
+- Each <b>row</b> represents a workshop
+- Each <b>column</b> represents an elf
+- Each <b>number</b> represents how many gifts that elf produced
+
+Your task<br>
+Using a loop inside a loop, calculate:
+1. For every workshop:
+   - Workshop number
+   - Total number of gifts made in that workshop
+2. After processing all workshops:
+   - Total number of gifts made in all workshops combined
+
+Input (data provided directly in code)<br>
+<i>[<br>
+[5, 7, 3],     // Workshop 1: 3 elves<br>
+[6, 4, 4, 5],  // Workshop 2: 4 elves<br>
+[10, 2]        // Workshop 3: 2 elves<br>
+]</i>
+
+Output example<br>
+<i>Workshop 1 made 15 gifts<br>
+Workshop 2 made 19 gifts<br>
+Workshop 3 made 12 gifts<br>
+Santa’s total gift count is 46</i>
+
+---

@@ -94,6 +94,9 @@ public class TaskProcessor {
             case 15:
                 calculateCheapestGift();
                 break;
+            case 16:
+                calculateGifts();
+                break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
                 return;
@@ -409,5 +412,25 @@ public class TaskProcessor {
         double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2);
 
         System.out.printf("Peter will spend %.2f.\n", finalMin);
+    }
+
+    private void calculateGifts() {
+        Integer[] workshop1 = new Integer[]{5, 7, 3, 100};
+        Integer[] workshop2 = new Integer[]{6, 4, 4, 5, 200};
+        Integer[] workshop3 = new Integer[]{10, 2, 300};
+        List<Integer[]> workshops = List.of(workshop1, workshop2, workshop3);
+        long[] workshopsGifts = new long[workshops.size()];
+        long totalGifts = 0L;
+
+        for (int i = 0; i < workshops.size(); i++) {
+            Integer[] workshop = workshops.get(i);
+            for (Integer integer : workshop) {
+                workshopsGifts[i] += integer;
+            }
+            totalGifts += workshopsGifts[i];
+            System.out.printf("Workshop %d made %d gifts,\n", i + 1, workshopsGifts[i]);
+        }
+
+        System.out.printf("Santa's total gift count is %d.\n", totalGifts);
     }
 }
