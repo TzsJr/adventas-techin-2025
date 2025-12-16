@@ -2,20 +2,23 @@ package lt.ng.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AnagramSorter {
     private final List<String> inputs;
-    private final Map<String, List<String>> groupedWords;
+    private Map<String, List<String>> groupedAndSortedWords;
 
     public AnagramSorter(List<String> inputs) {
         this.inputs = inputs;
-        groupedWords = new HashMap<>();
     }
 
     public void groupWords() {
+        Map<String, List<String>> groupedWords = new HashMap<>();
         for (String word : inputs) {
             List<String> words = new ArrayList<>();
 
@@ -23,15 +26,11 @@ public class AnagramSorter {
             words.add(word);
             String key = getKey(word.toLowerCase());
 
-            checkKeyAndGroup(key, words);
+            checkKeyAndGroup(key, words, groupedWords);
         }
 
         groupedWords.forEach((key, words) -> Collections.sort(words));
-        // todo sorting by size
-//        groupedWords.entrySet()
-//                .stream()
-//                .sorted(Comparator.comparing(entry -> entry.getValue().size(), Comparator.reverseOrder()))
-//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        groupedAndSortedWords = sortByValueSize(groupedWords);
     }
 
     private String getKey(String word) {
@@ -46,18 +45,29 @@ public class AnagramSorter {
         return String.format("L%d_V%d", length, wordValueInt);
     }
 
-    private void checkKeyAndGroup(String key, List<String> words) {
-        List<String> groupedWords = this.groupedWords.get(key);
+    private void checkKeyAndGroup(String key, List<String> words, Map<String, List<String>> groupedWordsMap) {
+        List<String> groupedWords = groupedWordsMap.get(key);
         if (groupedWords == null) {
-            this.groupedWords.put(key, words);
+            groupedWordsMap.put(key, words);
         } else {
             groupedWords.addAll(words);
-            this.groupedWords.put(key, groupedWords);
+            groupedWordsMap.put(key, groupedWords);
         }
     }
 
+    private Map<String, List<String>> sortByValueSize(Map<String, List<String>> map) {
+        return map.entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(en -> -en.getValue().size()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> a,
+                        LinkedHashMap::new));
+    }
+
     public String getResults() {
-        return String.format("Grouped anagram words: \n[\n%s\n]", mapToString(groupedWords));
+        return String.format("Grouped anagram words: \n[\n%s\n]", mapToString(groupedAndSortedWords));
     }
 
     private String mapToString(Map<String, List<String>> map) {
