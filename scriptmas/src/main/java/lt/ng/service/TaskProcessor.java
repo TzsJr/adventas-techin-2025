@@ -15,6 +15,8 @@ import lt.ng.model.WeightCalculator;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.time.Month.DECEMBER;
@@ -24,6 +26,7 @@ import static lt.ng.util.constant.ChristmasConstants.DIGITS;
 import static lt.ng.util.constant.ChristmasConstants.EXPENSIVE_PRICE;
 import static lt.ng.util.constant.ChristmasConstants.FESTIVE_MESSAGES;
 import static lt.ng.util.constant.ChristmasConstants.IMPLEMENTED_TASKS;
+import static lt.ng.util.constant.ChristmasConstants.JUICE_VESSELS;
 import static lt.ng.util.constant.ChristmasConstants.MINUTES_PASSED;
 import static lt.ng.util.constant.ChristmasConstants.UNEXPECTED_VALUE;
 
@@ -96,6 +99,9 @@ public class TaskProcessor {
                 break;
             case 16:
                 calculateGifts();
+                break;
+            case 17:
+                calculateJuiceBottles();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -432,5 +438,26 @@ public class TaskProcessor {
         }
 
         System.out.printf("Santa's total gift count is %d.\n", totalGifts);
+    }
+
+    private void calculateJuiceBottles() {
+        int[] juiceAmounts = new int[]{45, 92, 33, 4, 2, 1, 10};
+        List<Integer[]> totalVessels = new ArrayList<>();
+
+        for (int amount : juiceAmounts) {
+            int bigVessels = amount / JUICE_VESSELS[0];
+            int juiceLeft = amount - bigVessels * JUICE_VESSELS[0];
+            int mediumVessels = juiceLeft / JUICE_VESSELS[1];
+            int smallVessels = (juiceLeft - mediumVessels * JUICE_VESSELS[1]) / JUICE_VESSELS[2];
+            totalVessels.add(new Integer[]{bigVessels, mediumVessels, smallVessels});
+        }
+
+        for (int i = 0; i < totalVessels.size(); i++) {
+            System.out.printf(
+                    "Elf no. %d juice amount: %s, required vessels: %s\n",
+                    i + 1,
+                    juiceAmounts[i],
+                    Arrays.toString(totalVessels.get(i)));
+        }
     }
 }

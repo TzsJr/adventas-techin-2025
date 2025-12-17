@@ -456,3 +456,54 @@ Workshop 3 made 12 gifts<br>
 Santa’s total gift count is 46</i>
 
 ---
+
+# 17th of December
+
+### Santa’s Magic Juice Bottling Challenge
+
+Santa and the elves have made a huge amount of <b>Magic Holiday Juice</b> from freshly harvested apples. 
+They need your help to figure out how to bottle the juice correctly.
+
+The juice can be filled into:
+- <b>5-liter festive barrels
+- 2-liter elf jugs
+- 1-liter reindeer flasks</b>
+
+Each elf bottles juice using this rule:
+1. Fill as many <b>5-liter barrels</b> as possible
+2. Then fill <b>2-liter jugs</b>
+3. Put the remaining juice into <b>1-liter flasks</b>
+
+Your Task<br>
+Write a program that:
+- Stores the juice amounts in <b>an array or object.</b>
+- For each elf, calculates how many 5L, 2L, and 1L containers they will use.
+- Prints the results in the format:<br>
+<i>fiveLiter twoLiter oneLiter</i>
+
+One line per elf.
+
+Input (given directly in code)<br>
+// Example data<br>
+<i>const juiceAmounts = [45, 92, 33];</i><br>
+or<br>
+<i>const elves = [<br>
+{ name: "Sparkle", liters: 45 },<br>
+{ name: "Twinkle", liters: 92 },<br>
+{ name: "Jingle", liters: 33 }<br>
+];</i><br>
+
+Expected Output Format<br>
+For each elf:<br>
+<i>number_of_5L_barrels number_of_2L_jugs number_of_1L_flasks</i>
+
+Example with the given data:<br>
+Data:<br>
+<i>[45, 92, 33]</i>
+
+Output:<br>
+<i>9 0 0<br>
+18 1 0<br>
+6 1 1</i><br>
+
+---
