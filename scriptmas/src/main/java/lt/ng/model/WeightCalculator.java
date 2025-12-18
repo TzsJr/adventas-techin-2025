@@ -1,5 +1,6 @@
 package lt.ng.model;
 
+import java.math.RoundingMode;
 import java.util.List;
 
 import static lt.ng.util.NumberUtils.roundWithPrecision;
@@ -22,7 +23,7 @@ public class WeightCalculator {
             totalWeight += melonWeight;
         }
 
-        averageWeight = roundWithPrecision(totalWeight / totalMelons, 2);
+        averageWeight = roundWithPrecision(totalWeight / totalMelons, 2, RoundingMode.HALF_UP);
     }
 
     public void calculatePerfectMelonNumber() {

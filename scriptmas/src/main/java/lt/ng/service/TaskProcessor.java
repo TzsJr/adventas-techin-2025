@@ -13,6 +13,7 @@ import lt.ng.model.Students;
 import lt.ng.model.ToyCounter;
 import lt.ng.model.WeightCalculator;
 
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -102,6 +103,9 @@ public class TaskProcessor {
                 break;
             case 17:
                 calculateJuiceBottles();
+                break;
+            case 18:
+                calculateItemsPrices();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -415,16 +419,16 @@ public class TaskProcessor {
                 Double.MAX_VALUE,
                 3);
         double firstMin = Math.min(prices[0], prices[1]);
-        double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2);
+        double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2, RoundingMode.HALF_UP);
 
         System.out.printf("Peter will spend %.2f.\n", finalMin);
     }
 
     private void calculateGifts() {
-        Integer[] workshop1 = new Integer[]{5, 7, 3, 100};
-        Integer[] workshop2 = new Integer[]{6, 4, 4, 5, 200};
-        Integer[] workshop3 = new Integer[]{10, 2, 300};
-        List<Integer[]> workshops = List.of(workshop1, workshop2, workshop3);
+        List<Integer[]> workshops = List.of(
+                new Integer[]{5, 7, 3, 100},
+                new Integer[]{6, 4, 4, 5, 200},
+                new Integer[]{10, 2, 300});
         long[] workshopsGifts = new long[workshops.size()];
         long totalGifts = 0L;
 
@@ -459,5 +463,38 @@ public class TaskProcessor {
                     juiceAmounts[i],
                     Arrays.toString(totalVessels.get(i)));
         }
+    }
+
+    private void calculateItemsPrices() {
+        List<Double[]> itemsPrices = List.of(
+                new Double[]{1.07, 2.92, 3.45, 1.09, 0.89},
+                new Double[]{1.08, 2.35, 3.75, 1.12, 0.69},
+                new Double[]{0.98, 2.48, 3.62, 1.10, 0.72},
+                new Double[]{1.11, 2.22, 3.33, 4.44});
+        List<Number[]> output = new ArrayList<>();
+        double totalPrice = 0.0;
+
+        for (int i = 0; i < itemsPrices.size(); i++) {
+            Double[] store = itemsPrices.get(i);
+            double oneStoreTotalPrice = 0.0;
+            int itemCount = store.length;
+            for (Double itemPrice : store) {
+                oneStoreTotalPrice += itemPrice;
+            }
+            totalPrice += oneStoreTotalPrice;
+            output.add(new Number[]{
+                    i + 1,
+                    itemCount,
+                    roundWithPrecision(oneStoreTotalPrice, 2, RoundingMode.HALF_UP)});
+        }
+
+        for (Number[] storeInvoice : output) {
+            System.out.printf(
+                    "In store no. %s Santa bought %s items and paid %.2f.\n",
+                    storeInvoice[0],
+                    storeInvoice[1],
+                    (double) storeInvoice[2]);
+        }
+        System.out.printf("In total Santa paid %.2f.\n", roundWithPrecision(totalPrice, 2, RoundingMode.HALF_UP));
     }
 }

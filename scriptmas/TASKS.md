@@ -507,3 +507,44 @@ Output:<br>
 6 1 1</i><br>
 
 ---
+
+# 18th of December
+
+### Santa’s Shopping Trip
+
+Santa Claus is preparing for Christmas Eve! 
+He visited <b>n different stores</b>, and in each store he bought <b>m magical items</b> needed for gifts, decorations, or reindeer treats.
+
+For every store, you are given <b>m real numbers</b> — the prices of the items Santa bought in that store.
+
+Your task<br>
+For each store, calculate:
+1. <b>Store number</b> (starting from 1)
+2. <b>How many items Santa bought</b> in that store
+3. <b>How much money Santa spent</b> in that store (rounded to two decimal places)
+
+At the end, calculate:
+4. <b>The total money Santa spent across all stores</b>, rounded to two decimal places
+
+Input<br>
+The data is given directly inside the program as arrays/lists.
+
+Output format<br>
+For each store, print:<br>
+<i>storeNumber itemCount totalSpent</i><br>
+After all stores, print:<br>
+<i>totalSpentInAllStores</i>
+
+Example<br>
+If Santa bought these items:<br>
+<i>Store 1: 1.07 2.92 3.45 1.09 0.89<br>
+Store 2: 1.08 2.35 3.75 1.12 0.69<br>
+Store 3: 0.98 2.48 3.62 1.10 0.72</i><br>
+
+Your program should output:<br>
+<i>1 5 9.42<br>
+2 5 8.99<br>
+3 5 8.90<br>
+27.31</i>
+
+---
