@@ -19,10 +19,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import static java.time.Month.DECEMBER;
 import static lt.ng.util.NumberUtils.roundWithPrecision;
 import static lt.ng.util.constant.ChristmasConstants.CONSOLE_CLEAR;
+import static lt.ng.util.constant.ChristmasConstants.DIFFERENT_TOY_NUMBERS;
 import static lt.ng.util.constant.ChristmasConstants.DIGITS;
 import static lt.ng.util.constant.ChristmasConstants.EXPENSIVE_PRICE;
 import static lt.ng.util.constant.ChristmasConstants.FESTIVE_MESSAGES;
@@ -106,6 +109,9 @@ public class TaskProcessor {
                 break;
             case 18:
                 calculateItemsPrices();
+                break;
+            case 19:
+                countDuplicates();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -496,5 +502,29 @@ public class TaskProcessor {
                     (double) storeInvoice[2]);
         }
         System.out.printf("In total Santa paid %.2f.\n", roundWithPrecision(totalPrice, 2, RoundingMode.HALF_UP));
+    }
+
+    private void countDuplicates() {
+        int totalNumbers = ioManager.getIntInput(
+                "Please enter how many toy numbers there will be: ",
+                1,
+                Integer.MAX_VALUE);
+        int[] toyNumbers = ioManager.getNumberOfIntsInputFromLine(
+                "Please enter toy numbers (must be whole numbers). Valid format: 1 2 3 4",
+                1,
+                DIFFERENT_TOY_NUMBERS,
+                totalNumbers);
+        int[] counts = new int[DIFFERENT_TOY_NUMBERS];
+        Set<Integer> duplicates = new TreeSet<>();
+
+        for (int number : toyNumbers) {
+            int index = number - 1;
+            counts[index]++;
+            if (counts[index] > 1) {
+                duplicates.add(number);
+            }
+        }
+
+        System.out.printf("\nDuplicate toy numbers: %s\n", duplicates);
     }
 }

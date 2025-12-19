@@ -548,3 +548,40 @@ Your program should output:<br>
 27.31</i>
 
 ---
+
+# 19th of December
+
+### Santa’s Toy Collection – Trading Duplicates
+
+Santa has a full collection of <b>100 different Christmas toys</b>. Each toy has its own number from <b>1 to 100.</b>
+
+One of Santa’s elves, <b>Binky Frostynose</b>, has his own box of toys. 
+Some toy numbers may appear <b>several times</b> in his box – these are duplicates. 
+Binky Frostynose wants to <b>trade only the extra copies</b> of toys he already has, so he can get toys he is missing.
+
+Your job is to help him find <b>which toy numbers she can trade away.</b>
+
+Task<br>
+Write a program that:
+1. Reads how many toys Binky Frostynose currently has.
+2. Reads all the toy numbers he owns.
+3. Finds all toys that appear <b>more than once.</b>
+4. For each such toy, adds it to the “for trade” list.
+5. Prints all toy numbers for trade in <b>increasing order.</b>
+
+Input
+- First line: <b>n</b> – the number of toys in Binky Frostynose’s box.
+- Second line: <b>n integers</b> – the toy numbers (between 1 and 100). Some numbers may repeat.
+
+Output
+- Print all toy numbers Binky Frostynose will trade, in <b>ascending order</b>, separated by spaces.
+
+Example<br>
+Input<br>
+17<br>
+5 12 6 7 13 7 9 10 12 17 5 16 2 2 5 4 6
+
+Output<br>
+2 5 6 7 12
+
+---

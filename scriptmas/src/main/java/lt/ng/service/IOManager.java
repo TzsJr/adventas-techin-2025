@@ -259,6 +259,48 @@ public class IOManager {
         return doubleValues;
     }
 
+    public int[] getNumberOfIntsInputFromLine(String message, int lowLimit, int highLimit, int totalNumbers) {
+        boolean isValidValue = false;
+        String line;
+        String[] values;
+        int[] intValues = new int[totalNumbers];
+
+        do {
+            System.out.println(message);
+            try {
+                line = userInput.nextLine();
+                values = line.split(" ");
+                if (values.length < intValues.length) {
+                    isValidValue = reportErrorReturnNotValid(NOT_ENOUGH);
+                    continue;
+                } else if (values.length > intValues.length) {
+                    isValidValue = reportErrorReturnNotValid(TOO_MUCH);
+                    continue;
+                }
+
+                for (int i = 0; i < totalNumbers; i++) {
+                    int intValue = Integer.parseInt(values[i]);
+                    if (intValue < lowLimit) {
+                        isValidValue = reportErrorReturnNotValid(TOO_LOW);
+                        break;
+                    } else if (intValue > highLimit) {
+                        isValidValue = reportErrorReturnNotValid(TOO_HIGH);
+                        break;
+                    }
+
+                    intValues[i] = intValue;
+                    if (i == totalNumbers - 1) {
+                        isValidValue = true;
+                    }
+                }
+            } catch (NoSuchElementException | NullPointerException | NumberFormatException e) {
+                isValidValue = reportErrorReturnNotValid(ILLEGAL);
+            }
+        } while (!isValidValue);
+
+        return intValues;
+    }
+
     private boolean reportErrorReturnNotValid(String message) {
         System.out.printf(WRONG_VALUE, message);
         return false;
