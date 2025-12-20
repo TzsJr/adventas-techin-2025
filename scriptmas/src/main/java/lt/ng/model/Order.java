@@ -1,7 +1,6 @@
 package lt.ng.model;
 
-import java.math.RoundingMode;
-
+import static java.math.RoundingMode.UP;
 import static lt.ng.util.NumberUtils.round;
 import static lt.ng.util.NumberUtils.roundWithPrecision;
 import static lt.ng.util.constant.ChristmasConstants.EXTRA_TILES_PERCENT;
@@ -29,10 +28,10 @@ public class Order {
     public void calculateTotalCost() {
         tileArea = getArea(tileLength, tileWidth);
         roomArea = getArea(roomLength, roomWidth);
-        tileAmount = round((double) roomArea / tileArea, RoundingMode.UP);
+        tileAmount = round((double) roomArea / tileArea, UP);
         double extraTiles = (double) (tileAmount * EXTRA_TILES_PERCENT) / 100;
-        tileTotalAmount = round(extraTiles + tileAmount, RoundingMode.UP);
-        totalCost = roundWithPrecision(tileTotalAmount * m2price, 2, RoundingMode.UP);
+        tileTotalAmount = round(extraTiles + tileAmount, UP);
+        totalCost = roundWithPrecision(tileTotalAmount * m2price, 2, UP);
     }
 
     public String getOrderInvoice() {

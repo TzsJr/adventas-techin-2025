@@ -52,5 +52,6 @@ Išspręstas užduotis įkelk į savo viešą GitHub repozitoriją iki 2026 m. s
 
 - 8th of December. Blogai sugeneruotas raštas pavyzdyje. (1,4) langelyje yra '.' nors turėtų būti 'S'. Atitinkamai bloga suma kartojasi ir kituose tolesniuose langeliuose.
 - 13th of December. Sąlygoje nurodyta, jog merginų vardai baigiasi 'a', tačiau pavyzdyje pateikta ir 'Akvilė', kurios vardas baigiasi 'ė'.
+- 20th of December. Blogai suskaičiuota Jingle Sparkfoot sąskaita: London 12x0,5=6 + Paris 7x0,4=2,8, viso 8,8. Taip pat skiriasi ir Total = 31,30.
 
 ---

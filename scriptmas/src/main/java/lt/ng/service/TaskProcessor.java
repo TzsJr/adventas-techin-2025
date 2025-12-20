@@ -3,6 +3,7 @@ package lt.ng.service;
 import lt.ng.model.AnagramSorter;
 import lt.ng.model.ArcheryCalculator;
 import lt.ng.model.ArcheryCalculator.Coordinate;
+import lt.ng.model.CallBilling;
 import lt.ng.model.CartSystem;
 import lt.ng.model.Clock;
 import lt.ng.model.LightsGenerator;
@@ -13,15 +14,17 @@ import lt.ng.model.Students;
 import lt.ng.model.ToyCounter;
 import lt.ng.model.WeightCalculator;
 
-import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
+import static java.math.RoundingMode.HALF_UP;
 import static java.time.Month.DECEMBER;
 import static lt.ng.util.NumberUtils.roundWithPrecision;
 import static lt.ng.util.constant.ChristmasConstants.CONSOLE_CLEAR;
@@ -112,6 +115,9 @@ public class TaskProcessor {
                 break;
             case 19:
                 countDuplicates();
+                break;
+            case 20:
+                calculateCallingBills();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -425,7 +431,7 @@ public class TaskProcessor {
                 Double.MAX_VALUE,
                 3);
         double firstMin = Math.min(prices[0], prices[1]);
-        double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2, RoundingMode.HALF_UP);
+        double finalMin = roundWithPrecision(Math.min(firstMin, prices[2]), 2, HALF_UP);
 
         System.out.printf("Peter will spend %.2f.\n", finalMin);
     }
@@ -491,7 +497,7 @@ public class TaskProcessor {
             output.add(new Number[]{
                     i + 1,
                     itemCount,
-                    roundWithPrecision(oneStoreTotalPrice, 2, RoundingMode.HALF_UP)});
+                    roundWithPrecision(oneStoreTotalPrice, 2, HALF_UP)});
         }
 
         for (Number[] storeInvoice : output) {
@@ -501,7 +507,7 @@ public class TaskProcessor {
                     storeInvoice[1],
                     (double) storeInvoice[2]);
         }
-        System.out.printf("In total Santa paid %.2f.\n", roundWithPrecision(totalPrice, 2, RoundingMode.HALF_UP));
+        System.out.printf("In total Santa paid %.2f.\n", roundWithPrecision(totalPrice, 2, HALF_UP));
     }
 
     private void countDuplicates() {
@@ -526,5 +532,38 @@ public class TaskProcessor {
         }
 
         System.out.printf("\nDuplicate toy numbers: %s\n", duplicates);
+    }
+
+    private void calculateCallingBills() {
+        CallBilling billingForJingle = new CallBilling("Jingle", "Sparkfoot");
+        billingForJingle.addCall("London", 12);
+        billingForJingle.addCall("Paris", 7);
+        billingForJingle.calculateTotalCost();
+
+        CallBilling billingForTwinkle = new CallBilling("Twinkle", "Icicletoes");
+        billingForTwinkle.addCall("New York", 20);
+        billingForTwinkle.addCall("London", 5);
+        billingForTwinkle.calculateTotalCost();
+
+        CallBilling billingForPudding = new CallBilling("Pudding", "Gumdrops");
+        billingForPudding.addCall("Paris", 15);
+        billingForPudding.calculateTotalCost();
+
+        Map<String, CallBilling> bills = new TreeMap<>();
+        bills.put(billingForJingle.getUserLastName() + billingForJingle.getUserFirstName(), billingForJingle);
+        bills.put(billingForTwinkle.getUserLastName() + billingForTwinkle.getUserFirstName(), billingForTwinkle);
+        bills.put(billingForPudding.getUserLastName() + billingForPudding.getUserFirstName(), billingForPudding);
+
+        final double[] totalCost = {0.0};
+        bills.forEach((key, billing) -> {
+            double cost = billing.getCost();
+            System.out.printf(
+                    "%s %s total bill: %.2f\n",
+                    billing.getUserLastName(),
+                    billing.getUserFirstName(),
+                    cost);
+            totalCost[0] = roundWithPrecision(totalCost[0] + cost, 2, HALF_UP);
+        });
+        System.out.printf("Total: %.2f\n", totalCost[0]);
     }
 }

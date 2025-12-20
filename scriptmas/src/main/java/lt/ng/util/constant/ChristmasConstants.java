@@ -8,7 +8,7 @@ public class ChristmasConstants {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 19;
+    public static int IMPLEMENTED_TASKS = 20;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -30,6 +30,7 @@ public class ChristmasConstants {
                     17: Santa’s Magic Juice Bottling Challenge (bottle counter)
                     18: Santa’s Shopping Trip (items from stores calculator)
                     19: Santa’s Toy Collection – Trading Duplicates (duplicate counter)
+                    20: Santa’s Christmas Call Center – Billing Task
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -57,6 +58,10 @@ public class ChristmasConstants {
     // Different vessels for bottling, default values: 5 liters, 2 liters and 1 liter
     public static int[] JUICE_VESSELS = new int[]{5, 2, 1};
     public static int DIFFERENT_TOY_NUMBERS = 100;
+    public static Map<String, Double> CALL_PRICE_LIST = Map.of(
+            "London", 0.5,
+            "Paris", 0.4,
+            "New York", 0.7);
     public static String[] DIGITS = {
             """
             
