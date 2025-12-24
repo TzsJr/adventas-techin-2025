@@ -590,3 +590,68 @@ Output<br>
 
 ### Santa’s Christmas Call Center – Billing Task
 
+Every December, Santa runs a special <b>North Pole Call Center</b> where elves make phone calls to children around 
+the world to confirm their Christmas wishes.<br>
+At the end of the month, Santa must prepare a <b>magical call bill</b> for each elf.<br>
+Your task is to help Santa calculate how much each elf must pay for their calls (in candy canes or Christmas coins).
+
+Task Description<br>
+Santa has a list of elves. For each elf, you know:
+- <b>first name</b>
+- <b>last name</b>
+- a list of <b>calls</b> they made (each call contains: <i>cityName, minutesTalked</i>)
+
+Santa also has a <b>price list</b>, where for every city you know the <b>price per minute.</b>
+
+Your program must:
+1. <b>Calculate the total cost of calls</b> for each elf.
+2. <b>Sort all elves alphabetically</b> by last name.
+3. <b>Print the billing report</b>, showing:
+   - elf’s first name
+   - elf’s last name
+   - total cost of calls (rounded to 2 decimals)
+4. Finally, print:
+   - the <b>total money</b> collected from all elves.
+
+Input (stored directly in code)<br>
+Example data:<br>
+const elves = [<br>
+{<br>
+firstName: "Jingle",<br>
+lastName: "Sparkfoot",<br>
+calls: [<br>
+{ city: "London", minutes: 12 },<br>
+{ city: "Paris", minutes: 7 }<br>
+]<br>
+},<br>
+{<br>
+firstName: "Twinkle",<br>
+lastName: "Icicletoes",<br>
+calls: [<br>
+{ city: "NewYork", minutes: 20 },<br>
+{ city: "London", minutes: 5 }<br>
+]<br>
+},<br>
+{<br>
+firstName: "Pudding",<br>
+lastName: "Gumdrops",<br>
+calls: [<br>
+{ city: "Paris", minutes: 15 }<br>
+]<br>
+}<br>
+];<br>
+
+const priceList = {<br>
+London: 0.50,<br>
+Paris: 0.40,<br>
+NewYork: 0.70<br>
+};<br>
+
+Output Example<br>
+Gumdrops Pudding 6.00<br>
+Icicletoes Twinkle 16.50<br>
+Sparkfoot Jingle 9.50<br>
+Total: 32.00<br>
+(Names sorted alphabetically by last name.)
+
+---
