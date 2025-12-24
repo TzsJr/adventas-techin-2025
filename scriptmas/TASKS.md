@@ -655,3 +655,127 @@ Total: 32.00<br>
 (Names sorted alphabetically by last name.)
 
 ---
+
+# 21st of December
+
+### Christmas Library Task
+
+Just before Christmas, a small town library is preparing for the holidays. 
+Many readers want to borrow books to enjoy during long winter evenings. 
+The librarian needs a <b>simple program</b> to manage books, readers, and loans.<br>
+Your task is to help the librarian by creating a <b>Christmas Library System</b> using <b>object-oriented programming.</b><br>
+The task must be suitable for <b>Python, C#, JavaScript, and Java.</b>
+
+What the program should do<br>
+The library must be able to:
+- store information about books,
+- register readers,
+- lend books to readers,
+- accept returned books,
+- print a festive report of the library’s current state.
+
+All data is provided <b>directly in the code</b> (no files).
+
+Objects to implement<br>
+
+#### Book
+
+Represents a book on the library shelf.
+
+Fields:
+- id
+- title
+- author
+- totalCopies – total number of copies
+- availableCopies – copies currently available
+
+Methods:
+- isAvailable() → returns true if at least one copy is available
+
+Rules:
+- availableCopies cannot be negative
+- availableCopies cannot exceed totalCopies
+
+#### Reader
+
+Represents a library reader.
+
+Fields:
+- id
+- name
+- borrowLimit (e.g. 3 books)
+- borrowedBookIds (list or set)
+
+Methods:
+- canBorrow() → returns true if the reader has not reached the limit
+
+#### Loan
+
+Represents a borrowed book.
+
+Fields:
+- id
+- bookId
+- readerId
+- loanDate
+- returnDate (nullable)
+- status – ACTIVE or RETURNED
+
+#### Library
+
+The main class that manages everything.
+
+Fields:
+- books (collection of Book)
+- readers (collection of Reader)
+- loans (collection of Loan)
+
+Methods:
+- addBook(book)
+- registerReader(reader)
+- borrowBook(readerId, bookId, date)
+  - creates and returns a Loan
+  - fails if:
+    - book or reader does not exist
+    - no available copies
+    - reader reached borrow limit
+- returnBook(loanId, date)
+- getActiveLoans()
+- printChristmasReport()
+
+### Christmas Scenario
+
+Create the following data <b>inside the program:</b>
+
+Books
+- “Clean Code” – 2 copies
+- “The Pragmatic Programmer” – 1 copy
+- “Refactoring” – 1 copy
+
+Readers
+- Alice (borrow limit 2)
+- Bob (borrow limit 1)
+
+Actions
+1. Alice borrows Clean Code
+2. Alice borrows Clean Code again
+3. Bob tries to borrow Clean Code (should fail – no copies)
+4. Alice returns one copy of Clean Code
+5. Print the final Christmas report
+
+Example output (suggested)
+
+<i>BORROW OK: Alice borrowed "Clean Code"<br>
+BORROW OK: Alice borrowed "Clean Code"<br>
+BORROW FAILED: Bob cannot borrow "Clean Code" (no copies available)<br>
+RETURN OK: "Clean Code" returned by Alice<br>
+
+CHRISTMAS LIBRARY REPORT<br>
+Clean Code: 1 / 2 available<br>
+The Pragmatic Programmer: 1 / 1 available<br>
+Refactoring: 1 / 1 available<br>
+
+ACTIVE LOANS<br>
+Alice → Clean Code</i>
+
+---

@@ -13,7 +13,12 @@ import lt.ng.model.SeatCalculator;
 import lt.ng.model.Students;
 import lt.ng.model.ToyCounter;
 import lt.ng.model.WeightCalculator;
+import lt.ng.model.library.Book;
+import lt.ng.model.library.Library;
+import lt.ng.model.library.Loan;
+import lt.ng.model.library.Reader;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -118,6 +123,9 @@ public class TaskProcessor {
                 break;
             case 20:
                 calculateCallingBills();
+                break;
+            case 21:
+                launchLibrarySystem();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -565,5 +573,39 @@ public class TaskProcessor {
             totalCost[0] = roundWithPrecision(totalCost[0] + cost, 2, HALF_UP);
         });
         System.out.printf("Total: %.2f\n", totalCost[0]);
+    }
+
+    private void launchLibrarySystem() {
+        Library christmasLibrary = new Library();
+
+        Book cleanCode = new Book(1, "Clean Code", "Cleaner", 2);
+        christmasLibrary.addBook(cleanCode);
+        Book pragmaticProgrammer = new Book(2, "The Pragmatic Programmer", "Programmer", 1);
+        christmasLibrary.addBook(pragmaticProgrammer);
+        Book refactoring = new Book(3, "Refactoring", "Factorian", 1);
+        christmasLibrary.addBook(refactoring);
+
+        Reader alice = new Reader(1, "Alice", 2);
+        christmasLibrary.registerReader(alice);
+        Reader bob = new Reader(2, "Bob", 1);
+        christmasLibrary.registerReader(bob);
+
+        Loan loan1 = christmasLibrary.borrowBook(
+                alice.getId(),
+                cleanCode.getId(),
+                LocalDate.of(2025, DECEMBER, 22));
+        Loan loan2 = christmasLibrary.borrowBook(
+                alice.getId(),
+                cleanCode.getId(),
+                LocalDate.of(2025, DECEMBER, 23));
+        Loan loan3 = christmasLibrary.borrowBook(
+                bob.getId(),
+                cleanCode.getId(),
+                LocalDate.of(2025, DECEMBER, 23));
+
+        christmasLibrary.returnBook(loan1.getId(), LocalDate.of(2025, DECEMBER, 24));
+
+        christmasLibrary.printChristmasReport();
+        christmasLibrary.getActiveLoans();
     }
 }

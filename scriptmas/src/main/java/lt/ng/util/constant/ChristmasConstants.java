@@ -8,7 +8,7 @@ public class ChristmasConstants {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 20;
+    public static int IMPLEMENTED_TASKS = 21;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -31,6 +31,7 @@ public class ChristmasConstants {
                     18: Santa’s Shopping Trip (items from stores calculator)
                     19: Santa’s Toy Collection – Trading Duplicates (duplicate counter)
                     20: Santa’s Christmas Call Center – Billing Task
+                    21: Christmas Library Task
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -43,6 +44,10 @@ public class ChristmasConstants {
     public static String ILLEGAL = "Value illegal!";
     public static String WRONG_VALUE = "Wrong value! %s\n";
     public static String UNEXPECTED_VALUE = "Something unexpected entered: %d\n";
+    public static String BORROW_OK = "BORROW OK:";
+    public static String BORROW_FAIL = "BORROW FAILED:";
+    public static String RETURN_OK = "RETURN OK:";
+    public static String RETURN_FAIL = "RETURN FAILED:";
     public static String CONSOLE_CLEAR = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     public static int EXTRA_TILES_PERCENT = 5;
     public static int MINUTES_IN_H = 60;
