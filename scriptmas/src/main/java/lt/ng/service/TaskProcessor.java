@@ -17,6 +17,7 @@ import lt.ng.model.library.Book;
 import lt.ng.model.library.Library;
 import lt.ng.model.library.Loan;
 import lt.ng.model.library.Reader;
+import lt.ng.util.IOManager;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -32,6 +33,8 @@ import java.util.TreeSet;
 import static java.math.RoundingMode.HALF_UP;
 import static java.time.Month.DECEMBER;
 import static lt.ng.util.NumberUtils.roundWithPrecision;
+import static lt.ng.util.StringUtils.splitAndAppend;
+import static lt.ng.util.constant.ChristmasConstants.CHRISTMAS_TREE_TEXT;
 import static lt.ng.util.constant.ChristmasConstants.CONSOLE_CLEAR;
 import static lt.ng.util.constant.ChristmasConstants.DIFFERENT_TOY_NUMBERS;
 import static lt.ng.util.constant.ChristmasConstants.DIGITS;
@@ -126,6 +129,9 @@ public class TaskProcessor {
                 break;
             case 21:
                 launchLibrarySystem();
+                break;
+            case 22:
+                drawChristmasTreePattern();
                 break;
             default:
                 System.out.printf(UNEXPECTED_VALUE, taskId);
@@ -607,5 +613,11 @@ public class TaskProcessor {
 
         christmasLibrary.printChristmasReport();
         christmasLibrary.getActiveLoans();
+    }
+
+    private void drawChristmasTreePattern() {
+        List<String> wordsAppended = splitAndAppend(CHRISTMAS_TREE_TEXT);
+
+        wordsAppended.forEach(System.out::println);
     }
 }

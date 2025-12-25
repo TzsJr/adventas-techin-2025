@@ -8,7 +8,7 @@ public class ChristmasConstants {
         // Constant class shouldn't have public constructor. Import static constants/methods in order to use them
     }
 
-    public static int IMPLEMENTED_TASKS = 21;
+    public static int IMPLEMENTED_TASKS = 22;
     public static String TASKS_DESCRIPTION = String.format("""
                     Currently there are %d implemented tasks. Please choose wanted task by number or type '0' to exit:
                     1: Santa’s Tiling Trouble (tiles calculator)
@@ -32,6 +32,7 @@ public class ChristmasConstants {
                     19: Santa’s Toy Collection – Trading Duplicates (duplicate counter)
                     20: Santa’s Christmas Call Center – Billing Task
                     21: Christmas Library Task
+                    22: Christmas Tree (word pattern)
                     """,
             IMPLEMENTED_TASKS);
     public static String WELCOME = "Hello Santa!\n";
@@ -280,4 +281,8 @@ public class ChristmasConstants {
             "Santa is preparing boots and belt...",
             "Elves put gifts into a bag..."
     };
+    public static String CHRISTMAS_TREE_TEXT = "Linkiu geros pradžios, naujos energijos, tikrų atradimų, drąsių idėjų, " +
+            "atvirumo viskam, kas nauja. Linksmų Šv. Kalėdų ir sėkmingų Naujųjų 2026-tų metų. " +
+            "We wish you a good start, fresh energy, true discoveries, bold ideas, significant gains and " +
+            "openness for innovations. Merry Christmas and a Happy New Year!";
 }

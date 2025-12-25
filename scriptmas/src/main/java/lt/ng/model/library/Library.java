@@ -91,7 +91,7 @@ public class Library {
     public void returnBook(int loanId, LocalDate date) {
         Loan loan = getLoanById(loanId);
         if (loan == null) {
-            System.out.printf("%s Loan with id=%d not found!\n", RETURN_FAIL, loanId);
+            System.out.printf("%s Loan not found! Borrow failed or didn't happen!\n", RETURN_FAIL);
             return;
         }
         if (loan.getLoanDate().isAfter(date)) {

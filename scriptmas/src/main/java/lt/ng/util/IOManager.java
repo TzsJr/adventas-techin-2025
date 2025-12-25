@@ -1,4 +1,4 @@
-package lt.ng.service;
+package lt.ng.util;
 
 import lt.ng.model.ArcheryCalculator.Coordinate;
 
